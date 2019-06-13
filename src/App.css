@@ -1,5 +1,5 @@
 .App {
-  padding-bottom: 60px;
+  padding-bottom: 0px;
   text-align: center;
 }
 
@@ -32,16 +32,13 @@
 }
 
 .App-footer {
-  position: absolute;
-  text-align: center;
   padding-top: 50px;
   height: 150px;
   background-color: #282c34;
   color: white;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  
 }
+
 
 .App-link {
   color: #61dafb;

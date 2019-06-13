@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Authoring Tools App",
+  "name": "MyELT Authoring Companion Tool",
   "icons": [
     {
       "src": "favicon.ico",

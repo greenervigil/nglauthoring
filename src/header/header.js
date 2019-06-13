@@ -8,10 +8,12 @@ const Header = (props) => {
     ReactDOM.render(<App />, document.getElementById('root'));
   }
 
-    return <div className="App-header">
-      <img src={logo} alt="myelt logo" onClick={returnHome}/>
-      <h1>{props.name}</h1>
-    </div>;
+    return (
+      <div className="App-header">
+        <img src={logo} alt="myelt logo" onClick={returnHome}/>
+        <h1>{props.name}</h1>
+      </div>
+    );
   }
 
   export default Header;

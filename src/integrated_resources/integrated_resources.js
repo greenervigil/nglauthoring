@@ -3,7 +3,7 @@ import Header from '../header/header'
 import CommitBox from '../commit/commitbox';
 //import ImportFile from '../importfile/importfile';
 import Footer from '../footer/footer';
-import {Form, TextArea} from 'semantic-ui-react'
+import {Form, TextArea, Input} from 'semantic-ui-react'
 import CSVReader from 'react-csv-reader'
 //import {Button} from 'semantic-ui-react'
 
@@ -24,11 +24,8 @@ const IntegratedResources = (props) => {
         <>
           <Header name={props.name}/>
           <div className="container">
-            <span>Book Abbreviation</span>
-            <input type="text"></input>
+            <Input focus placeholder="Book Abbr"/>
             <CSVReader cssClass="react-csv-input" label="Select CSV with Resources" onFileLoaded={handleForce} />
-          </div>
-          <div>
             <JsonReturn />
             <CommitBox />
           </div>

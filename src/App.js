@@ -10,10 +10,10 @@ class App extends Component {
     return (
       <div className="App" >
         <Header name="Authoring Resources"/>
-        <div>
+        <div >
           <MainMenu/>
         </div>
-          <Footer/>
+        <Footer/>
       </div>
     );
   }
