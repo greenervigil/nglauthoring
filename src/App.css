@@ -1,4 +1,5 @@
 .App {
+  padding-bottom: 60px;
   text-align: center;
 }
 
@@ -9,7 +10,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,8 +19,51 @@
   color: white;
 }
 
+.fileCompile {
+  padding: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.jsonbody {
+  padding: 10px;
+  justify-content: center;
+}
+
+.App-footer {
+  position: absolute;
+  text-align: center;
+  padding-top: 50px;
+  height: 150px;
+  background-color: #282c34;
+  color: white;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.bookSelect {
+  margin: 10px;
+}
+
+.main {
+  padding: 100px;
+}
+
+.menu {
+  text-align: center;
+}
+
+.menu_block {
+  background-color: #61dafb;
+  display: inline-block;
+  height: 200px;
+  padding: 10px;
 }
 
 @keyframes App-logo-spin {
@@ -29,4 +73,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  text-align: center;
+  padding: 15px;
+  margin: 10px auto;
+}
+
+.csv-input {
+  padding: 10px;
+  display: block;
+  margin: 15px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
