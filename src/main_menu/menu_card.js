@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import {Card, Button, Icon, Image} from 'semantic-ui-react'
+import {Card, Button, Image} from 'semantic-ui-react'
 import IntegratedResources from '../integrated_resources/integrated_resources';
 import BookConfig from '../book_author/book_config';
 
@@ -26,12 +26,7 @@ const MenuCard = (props) => {
                 <Card.Meta>{props.description}</Card.Meta>
             </Card.Content>
             <Card.Content extra>
-                <Button primary name={props.name} animated onClick={handleClick}>
-                    <Button.Content visible>Select</Button.Content>
-                    <Button.Content hidden >
-                        <Icon name='arrow right' />
-                    </Button.Content>
-                </Button>
+                <Button primary name={props.name} onClick={handleClick}>Select</Button>
             </Card.Content>
         </Card>
     )

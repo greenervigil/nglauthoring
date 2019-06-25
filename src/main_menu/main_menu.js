@@ -5,8 +5,8 @@ import { Grid } from 'semantic-ui-react';
 const MainMenu = (props) => {
     return (
         <div className='main'>
-            <Grid stackable columns={2}>
-                <Grid.Column>
+            <Grid stackable columns={1}>
+                {/*<Grid.Column>
                     <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
                 </Grid.Column>
                 <Grid.Column>
@@ -14,7 +14,7 @@ const MainMenu = (props) => {
                 </Grid.Column>
                 <Grid.Column>
                     <MenuCard name="SRI Grammars" description="Create grammars from product file and compile for errors."/>
-                </Grid.Column>
+                </Grid.Column>*/}
                 <Grid.Column>
                     <MenuCard name="Integrated Resources" description="Create a JSON for the additional Resources."/>
                 </Grid.Column>

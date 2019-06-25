@@ -1,5 +1,5 @@
 .App {
-  padding-bottom: 60px;
+  padding-bottom: 0px;
   text-align: center;
 }
 
@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #282c34;
-  height: 200px;
+  height: 175px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,16 +32,18 @@
 }
 
 .App-footer {
-  position: absolute;
+  display: block;
   text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
   padding-top: 50px;
-  height: 150px;
+  padding-bottom: 50px;
   background-color: #282c34;
   color: white;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  
 }
+
 
 .App-link {
   color: #61dafb;
@@ -76,7 +78,6 @@
 }
 
 .container {
-  text-align: center;
   padding: 15px;
   margin: 10px auto;
 }
