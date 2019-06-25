@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from '../App';
 import logo from '../MyELT_logo.png';
 
-const Header = (props) => {
+const Header = () => {
   const returnHome = () => {
     ReactDOM.render(<App />, document.getElementById('root'));
   }
@@ -11,7 +11,7 @@ const Header = (props) => {
     return (
       <div className="App-header">
         <img src={logo} alt="myelt logo" onClick={returnHome}/>
-        <h1>{props.name}</h1>
+        <h1>Authoring Companion Tool</h1>
       </div>
     );
   }
