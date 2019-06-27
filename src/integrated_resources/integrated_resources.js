@@ -60,41 +60,57 @@ const IntegratedResources = (props) => {
           resources : [
             {
               name:  element[4],
-              location: path + 'Video/' + element[5],
+              location: path + element[0] + '/' + element[5],
               teacherOnly: (element[7] === 'TRUE'),
               downloadable: (element[8] === 'TRUE'),
-              type: 'video'
+              type: element[0].toLowerCase()
             }
           ]
         }
       ];
 
       if(element[6] === 'TRUE') {
-        e.subfolders[0].resources[0].locationCC = path + 'Video/' + element[5].substring(0, element[5].length - 3) + 'vtt';
+        e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt';
       }
 
       if(element[0] === 'Audio') {
         if(!audio.folders.length) {
           audio.folders.push(e); 
         } else {
-          let add = false;
+          let add;
+          //check the folder items checking the index if it does not exist set it to be added
           audio.folders.forEach(elem => {
             if(elem.index !== e.index) {
               add = true;
-            } 
+            } else {
+              add = false;
+            }
           });
+
           if (add) {
             audio.folders.push(e);
           } else  {
             audio.folders.forEach(el => {
               if (el.index === e.index) {
+                let subfolder;
+                //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
-                  if(el.subfolders[0].name === e.subfolders[0].name) {
-                    el.subfolders[0].resources.push(e.subfolders[0].resources[0]);
+                  if(sub.name !== e.subfolders[0].name) {
+                    subfolder = true;
                   } else {
-                    el.subfolders.push(e.subfolders[0]);
+                    subfolder = false;
                   }
-                })
+                });
+
+                if(subfolder) {
+                  el.subfolders.push(e.subfolders[0]);
+                } else {
+                  el.subfolders.forEach(s => {
+                    if(s.name === e.subfolders[0].name) {
+                      s.resources.push(e.subfolders[0].resources[0]);
+                    }
+                  });
+                }
               }
             })
           }
@@ -103,24 +119,40 @@ const IntegratedResources = (props) => {
         if(!video.folders.length) {
           video.folders.push(e); 
         } else {
-          let add = false;
+          let add;
+          //check the folder items checking the index if it does not exist set it to be added
           video.folders.forEach(elem => {
             if(elem.index !== e.index) {
               add = true;
-            } 
+            } else {
+              add = false;
+            }
           });
+
           if (add) {
             video.folders.push(e);
           } else  {
             video.folders.forEach(el => {
               if (el.index === e.index) {
+                let subfolder;
+                //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
-                  if(el.subfolders[0].name === e.subfolders[0].name) {
-                    el.subfolders[0].resources.push(e.subfolders[0].resources[0]);
+                  if(sub.name !== e.subfolders[0].name) {
+                    subfolder = true;
                   } else {
-                    el.subfolders.push(e.subfolders[0]);
+                    subfolder = false;
                   }
-                })
+                });
+
+                if(subfolder) {
+                  el.subfolders.push(e.subfolders[0]);
+                } else {
+                  el.subfolders.forEach(s => {
+                    if(s.name === e.subfolders[0].name) {
+                      s.resources.push(e.subfolders[0].resources[0]);
+                    }
+                  });
+                }
               }
             })
           }
@@ -129,24 +161,40 @@ const IntegratedResources = (props) => {
         if(!documents.folders.length) {
           documents.folders.push(e); 
         } else {
-          let add = false;
+          let add;
+          //check the folder items checking the index if it does not exist set it to be added
           documents.folders.forEach(elem => {
             if(elem.index !== e.index) {
               add = true;
-            } 
+            } else {
+              add = false;
+            }
           });
+
           if (add) {
             documents.folders.push(e);
           } else  {
             documents.folders.forEach(el => {
               if (el.index === e.index) {
+                let subfolder = false;
+                //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
-                  if(el.subfolders[0].name === e.subfolders[0].name) {
-                    el.subfolders[0].resources.push(e.subfolders[0].resources[0]);
-                  } else {
-                    el.subfolders.push(e.subfolders[0]);
-                  }
-                })
+                  if(sub.name !== e.subfolders[0].name) {
+                    subfolder = true;
+                  } /*else {
+                    subfolder = false;
+                  }*/
+                });
+
+                if(subfolder) {
+                  el.subfolders.push(e.subfolders[0]);
+                } else {
+                  el.subfolders.forEach(s => {
+                    if(s.name === e.subfolders[0].name) {
+                      s.resources.push(e.subfolders[0].resources[0]);
+                    }
+                  });
+                }
               }
             })
           }
