@@ -30,8 +30,8 @@ const IntegratedResources = (props) => {
     let audio = {
       display: "Audio",
       icon: icon + "audio.jpg",
-      zip: path + "audio/Audio.zip",
-      zipInstructor: path+ "/Audio.zip",
+      zip: path + "Audio/Audio.zip",
+      zipInstructor: path+ "Audio/Audio.zip",
       folders : []
     };
     let video = {
