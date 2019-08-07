@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import {Card, Button, Image} from 'semantic-ui-react'
-import IntegratedResources from '../integrated_resources/integrated_resources';
-import BookConfig from '../book_author/book_config';
+import IntegratedResources from './integrated_resources';
+import BookConfig from './book_config';
+import SRICongif from './sri_config';
+import Grammar from './grammar';
 
 const MenuCard = (props) => {
     const handleClick = (e) => {
@@ -13,8 +15,12 @@ const MenuCard = (props) => {
             ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'));
         }else if (name === 'Objectives'){
             ReactDOM.render(<IntegratedResources name="Objectives"/>, document.getElementById('root'));
-        } else if (name === "SRI Grammars") {
-            ReactDOM.render(<IntegratedResources name="SRI Grammars"/>, document.getElementById('root'));
+        } else if (name === "SRI") {
+            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'));
+        } else if (name === "SRI Grammar") {
+            ReactDOM.render(<Grammar name="SRI Grammars"/>, document.getElementById('root'));
+        } else if (name === "SRI Server Stats") {
+            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'));
         }
         
     }

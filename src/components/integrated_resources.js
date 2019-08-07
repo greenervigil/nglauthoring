@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../header/header'
-import CommitBox from '../commit/commitbox';
-import Footer from '../footer/footer';
+import Header from './header'
+import CommitBox from './commitbox';
+import Footer from './footer';
 import CSVReader from 'react-csv-reader'
 
 let json = {
