@@ -1,8 +1,9 @@
-import React from 'react';
-import { Table } from 'semantic-ui-react';
-import GrammarModal from './grammar_modal';
+import React from 'react'
+import { Table } from 'semantic-ui-react'
+import GrammarModal from './grammar_modal'
+import GrammarRow from './grammar_row'
 
-const GrammarTable = () => (
+const GrammarTable = (props) => (
     <>
     <div className="container">
         <Table celled compact definition>
@@ -18,15 +19,13 @@ const GrammarTable = () => (
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-
+                {props.data
+                    .filter((row, index) => index !== 0)
+                    .map((row, index) => (
+                        <GrammarRow row={row} key={index}/>
+                    )
+                )}
             </Table.Body>
-            {/*<Table.Footer fullWidth>
-                <Table.Row>
-                    <Table.HeaderCell colSpan='7'>
-                        <Button floated='right' primary>Add Line</Button>
-                    </Table.HeaderCell>
-                </Table.Row>
-            </Table.Footer>*/}
         </Table>
     </div>
     <GrammarModal />
