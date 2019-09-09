@@ -2,7 +2,12 @@ import React from 'react'
 import { Table, Icon } from 'semantic-ui-react'
 
 const checkGrammar = (phrase) => {
-    return /\d/.test(phrase)
+    if(!/\d/.test(phrase) && !/<[a-s][\s\S]*>/i.test(phrase)) {
+        document.getElementById('alert').removeAttribute('hidden')
+        return false
+    } else {
+        return true
+    }
 }
 
 const GrammarRow = (props) => (
