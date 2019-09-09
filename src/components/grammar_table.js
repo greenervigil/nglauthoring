@@ -5,8 +5,7 @@ import GrammarRow from './grammar_row'
 
 const GrammarTable = (props) => (
     <>
-    <div className="container">
-        <Table celled compact definition>
+        <Table celled compact fixed singleLine definition>
             <Table.Header fullWidth>
                 <Table.Row>
                     <Table.HeaderCell>Filename</Table.HeaderCell>
@@ -27,8 +26,7 @@ const GrammarTable = (props) => (
                 )}
             </Table.Body>
         </Table>
-    </div>
-    <GrammarModal />
+        <GrammarModal />
     </>
 );
 
