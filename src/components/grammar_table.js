@@ -5,7 +5,7 @@ import GrammarRow from './grammar_row'
 
 const GrammarTable = (props) => (
     <>
-        <Table celled compact fixed singleLine definition>
+        <Table celled compact fixed definition>
             <Table.Header fullWidth>
                 <Table.Row>
                     <Table.HeaderCell>Filename</Table.HeaderCell>

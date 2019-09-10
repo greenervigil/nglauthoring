@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal, Button, Header } from 'semantic-ui-react';
 import GrammarForm from './grammar_form';
-
+/*<Modal trigger={<Button hidden disabled floated='right'>Add Line</Button>} centered={false} ></Modal>*/
 const GrammarModal = () => (
-    <Modal trigger={<Button disabled floated='right'>Add Line</Button>} centered={false} >
+    <Modal>
         <Modal.Header>Grammar Entry</Modal.Header>
         <Modal.Content>
             <Modal.Description>
@@ -15,7 +15,7 @@ const GrammarModal = () => (
         <Modal.Actions>
             <Button floated='right' content="Finished"/>
         </Modal.Actions>
-    </Modal>
+</Modal>
 );
 
 export default GrammarModal;

@@ -1,3 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  position: relative;
+}
+
 .App {
   padding-bottom: 0px;
   text-align: center;
@@ -30,20 +43,6 @@
   padding: 10px;
   justify-content: center;
 }
-
-.App-footer {
-  display: block;
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: #282c34;
-  color: white;
-  
-}
-
 
 .App-link {
   color: #61dafb;
@@ -88,4 +87,17 @@
   margin: 15px auto;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.App-footer {
+  display: block;
+  background-color: #282c34;
+  text-align: center;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 10%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
