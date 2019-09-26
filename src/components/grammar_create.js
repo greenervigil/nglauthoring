@@ -59,7 +59,10 @@ const GrammarCreate = (props) => {
         link.click()
     }
     return (
-        <Button primary onClick={handleClick}>Compile Grammar</Button>
+        <>
+            <Button primary onClick={handleClick}>Compile Grammar File</Button>
+            <Button primary>Export CSV</Button>
+        </>
     )
 }
 
