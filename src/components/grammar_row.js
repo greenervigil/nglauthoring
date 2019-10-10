@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Icon } from 'semantic-ui-react'
 
-const checkGrammar = (phrase) => {
+function checkGrammar(phrase) {
     if(!/\d/.test(phrase) && !/<[a-s][\s\S]*>/i.test(phrase) && !/[;&#]/i.test(phrase)) {
         document.getElementById('alert').removeAttribute('hidden')
         return false
@@ -10,7 +10,7 @@ const checkGrammar = (phrase) => {
     }
 }
 
-const GrammarRow = ({ engine, row}) => {
+export default function GrammarRow({ engine, row}) {
     if(engine === 'Listening and Speaking'){
         return (
             <Table.Row>
@@ -51,5 +51,3 @@ const GrammarRow = ({ engine, row}) => {
         )
     }
 }
-
-export default GrammarRow
