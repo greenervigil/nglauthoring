@@ -10,21 +10,13 @@ let json = {
   document: {}
 }
 
-const IntegratedResources = (props) => {
-  /*const JsonReturn = (props) => {
-    return (
-      <textarea className="form-control" rows="3" value={props.data} readOnly></textarea>
-    );
-  }*/
-
-  const handleForce = (data) => {
+export default function IntegratedResources({ name }) {
+  function handleFileLoad(data) {
     const book = document.getElementById('bookAbbr').value;
     parseToJson(book, data);
   }
-
-  const parseToJson = (a,d) => {
-    
-    const path = "/media/books/" + a + "/Resources/";
+  function parseToJson(bookAbbr,data) {
+    const path = "/media/books/" + bookAbbr + "/Resources/";
     const icon = "img/";
     
     let audio = {
@@ -49,7 +41,7 @@ const IntegratedResources = (props) => {
       folders : []
     };
 
-    d.forEach(element => {
+    data.forEach(element => {
       const e = {};
 
       e.name =element[1];
@@ -205,37 +197,32 @@ const IntegratedResources = (props) => {
     json.video = video;
     json.document = documents;
     document.getElementById('alert').removeAttribute('hidden');
-  }  
+  }
   return (
-        <>
-        <Header />
-        <div className="main">
-          <h2>{props.name}</h2>
-          <div className="container">
-            <form>
-              <div className="form-group">
-                <label>Book Abbreviation</label>
-                <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" />
-              </div>
-              <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleForce} />
-            </form>
+    <>
+    <Header />
+    <div className="main">
+      <h2>{name}</h2>
+      <div className="container">
+        <form>
+          <div className="form-group">
+            <label>Book Abbreviation</label>
+            <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" />
           </div>
-          <div className="container">
-            <div className="alert alert-success alert-dismissible" id="alert" role="alert" hidden>
-              <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-              <strong>Well done!</strong> JSON creation completed.
-            </div>
-          </div>
-          {/*<div className="container">
-            <JsonReturn data={JSON.stringify(json)}/>
-          </div>*/}
-          <div className="container">
-            <CommitBox data={json}/>
-          </div>
+          <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
+        </form>
+      </div>
+      <div className="container">
+        <div className="alert alert-success alert-dismissible" id="alert" role="alert" hidden>
+          <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
+          <strong>Well done!</strong> JSON creation completed.
         </div>
-        <Footer />
-        </>
-      );
+      </div>
+      <div className="container">
+        <CommitBox data={json}/>
+      </div>
+    </div>
+    <Footer />
+    </>
+  )
 }
-
-export default IntegratedResources;

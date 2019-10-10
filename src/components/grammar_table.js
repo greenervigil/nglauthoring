@@ -4,29 +4,27 @@ import GrammarModal from './grammar_modal'
 import GrammarRow from './grammar_row'
 import GrammarTableHeader from './grammar_table_header'
 
-const GrammarTable = (props) => (
-    <>
+export default function GrammarTable({ data, engine }) {
+    return (
+        <>
         <Table celled fixed definition>
             <Table.Header fullWidth>   
-            {props.data
-                .filter((row, index) => index===0)
+            {data.filter((row, index) => index===0)
                 .map((row, index) => (
                     <GrammarTableHeader headerRow={row} key={index} />
                 )
             )}
             </Table.Header>
             <Table.Body>
-                {props.data
-                    .filter((row, index) => index !== 0)
+                {data.filter((row, index) => index !== 0)
                     .map((row, index) => (
-                        <GrammarRow row={row} key={index} engine={props.engine}/>
+                        <GrammarRow row={row} key={index} engine={engine}/>
                     )
                 )}
             </Table.Body>
         </Table>
         <GrammarModal />
-    </>
-);
-
-export default GrammarTable;
+        </>
+    )
+}
 

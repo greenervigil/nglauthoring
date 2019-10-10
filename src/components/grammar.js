@@ -19,26 +19,23 @@ const engines = [
         value: 'SRILSDYN'
     }
 ]
-/*
-    ["filename", "pageindex", "questionText", "answers", "", "", "", "grammarID"]
-*/
-const Grammar = (props) => {
-    const readFile = (d) => {
+
+export default function Grammar({ name }) {
+    function readFile(data) {
         const engine = document.getElementById("engine").getElementsByClassName("active")[0].innerText
         const tableElement = document.getElementById('grammarTable')
         ReactDOM.render(
             <div className="container">
-                <GrammarTable data={d} engine={engine}/>
-                <GrammarCreate data={d} engine={engine}/>
+                <GrammarTable data={data} engine={engine}/>
+                <GrammarCreate data={data} engine={engine}/>
             </div>, 
         tableElement)
     }
-
     return (
         <>
         <Header />
         <div className="main">
-            <h2>{props.name}</h2>
+            <h2>{name}</h2>
             <p>Upload CSV grammar file to evaluate grammar correctness.</p>
             <p><strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
             <div className="alert alert-warning alert-dismissible" id="alert" role="alert" hidden>
@@ -57,5 +54,3 @@ const Grammar = (props) => {
         </>
     )
 }
-
-export default Grammar;

@@ -19,7 +19,7 @@ const GrammarCreate = (props) => {
             } else {
                 grammarString += grammarArray[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
             }
-        } else {
+        } else if (props.engine === 'Multiple Choice'){
             //answer 1
             if (grammarArray[4] === '') {
                 //skip
@@ -42,6 +42,8 @@ const GrammarCreate = (props) => {
             } else if(grammarArray[6] !== '') {
                 grammarString += grammarArray[6].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
             } 
+        } else {
+            //do nothing
         }       
 
         return grammarString

@@ -4,7 +4,7 @@ import Footer from './footer';
 import { Grid } from 'semantic-ui-react';
 import MenuCard from './menu_card';
 
-const SRIConfig = () => {
+export default function SRIConfig() {
     return (
         <>
             <Header />
@@ -22,5 +22,3 @@ const SRIConfig = () => {
         </>
     )
 }
-
-export default SRIConfig;
