@@ -1,18 +1,17 @@
 {
   "name": "resources",
+  "description": "Authoring companion tool to configuration specific changes to author content on MyELT.",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.7.0",
-    "react-csv-reader": "^1.2.2",
-    "react-dom": "^16.7.0",
-    "react-scripts": "^3.0.1",
-    "semantic-ui-react": "^0.87.1"
+  "repository": {
+    "type": "git",
+    "url": "http://stash.corp.web:7990/scm/myelt/authoring-resource-tools.git"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "publish": "node ./scripts/artifact",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -23,5 +22,19 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "dependencies": {
+    "lodash": "4.17.15",
+    "react": "^16.10.2",
+    "react-csv-reader": "^1.2.2",
+    "react-dom": "^16.10.2",
+    "react-scripts": "^3.0.1",
+    "semantic-ui-react": "^0.87.1"
+  },
+  "devDependencies": {
+    "artifact": "^0.5.1",
+    "prettier": "^1.18.2",
+    "react-test-renderer": "^16.8.6",
+    "semver": "6.3.0"
+  }
 }
