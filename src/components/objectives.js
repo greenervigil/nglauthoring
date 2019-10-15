@@ -34,10 +34,10 @@ export default function Objectives({ name }) {
     function readObjectiveFile(data) {
         const tableElement = document.getElementById('objectiveText')
         ReactDOM.render(
-            <div>
-                <strong><p>Copy & Paste the text below and add to your books info.xml file.</p></strong>
+            <>
                 <pre>{objectiveMap(data)}</pre>
-            </div>, 
+                <strong><p>Copy & Paste the text below and add to your books info.xml file.</p></strong>
+            </>, 
         tableElement)
     }
     return (
