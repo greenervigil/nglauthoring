@@ -4,7 +4,7 @@ import { Grid } from 'semantic-ui-react';
 
 export default function MainMenu() {
     return (
-        <div className='main'>
+        <>
             <Grid stackable columns={2} >
                 {/*<Grid.Column>
                     <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
@@ -19,6 +19,6 @@ export default function MainMenu() {
                     <MenuCard name="Integrated Resources" description="Create a JSON for the additional Resources."/>
                 </Grid.Column>
             </Grid>
-        </div>
+        </>
     )
 }

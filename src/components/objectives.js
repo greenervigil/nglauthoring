@@ -23,10 +23,15 @@ export default function Objectives({ name }) {
         <Header />
         <div className="main">
             <h2>{name}</h2>
-            <Form>
-                <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
-                <div id="objectiveText"></div> 
-            </Form>
+            <div className="container">
+                <Form>
+                    <label className="sr-only">CSV File Select</label>
+                    <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
+                </Form>
+            </div>
+            <div className="container">
+                <span id="objectiveText"></span>
+            </div> 
         </div>
         <Footer />
         </>

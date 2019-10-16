@@ -8,7 +8,7 @@ export default function SRIConfig() {
     return (
         <>
             <Header />
-            <div className='main'>
+            <div className='container'>
                 <Grid stackable >
                     <Grid.Column>
                         <MenuCard name="SRI Grammar" description="Create grammars from product file, compile, and debug for errors."/>
