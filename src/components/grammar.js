@@ -5,28 +5,15 @@ import Footer from './footer';
 import GrammarTable from './grammar_table';
 import CSVReader from 'react-csv-reader';
 import GrammarCreate from './grammar_create'
-import { Dropdown } from 'semantic-ui-react';
-
-const engines = [
-    {
-        key: 'srimcdyn',
-        text: 'Multiple Choice',
-        value: 'SRIMCDYN'
-    },
-    {
-        key: 'srilsdyn',
-        text: 'Listening and Speaking',
-        value: 'SRILSDYN'
-    }
-]
 
 export default function Grammar({ name }) {
     function readFile(data) {
-        const engine = document.getElementById("engine").getElementsByClassName("active")[0].innerText
+        const engine = document.getElementById("engine")//.getElementsByClassName("active")[0].innerText
+
         const tableElement = document.getElementById('grammarTable')
         ReactDOM.render(
             <div className="container">
-                <GrammarTable data={data} engine={engine}/>
+                <GrammarTable data={data} engine={engine.options[engine.selectedIndex].text}/>
                 <GrammarCreate data={data} engine={engine}/>
             </div>, 
         tableElement)
@@ -44,7 +31,11 @@ export default function Grammar({ name }) {
             </div>
             <form>
                 <div className="form-group">
-                    <Dropdown id="engine" placeholder="Select engine Type" clearable fluid selection options={engines}/>
+                    <label className="sr-only" htmlFor="engine">Select Engine Type</label>
+                    <select className="form-control" id="engine">
+                        <option value="Multiple Choice">Multiple Choice</option>
+                        <option value="Listening and Speaking">Listening and Speaking</option>
+                    </select>
                     <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                 </div>
             </form>
