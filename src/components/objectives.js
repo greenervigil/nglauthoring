@@ -4,39 +4,17 @@ import Header from './header'
 import Footer from './footer'
 import CSVReader from 'react-csv-reader'
 import { Form } from 'semantic-ui-react'
-import Objective from './objective'
+import ObjectiveMap from './objective_map'
+import XMLData from './xmldata'
 
 export default function Objectives({ name }) {
-    const objectiveMap = (data) => {
-        return (
-            <code>
-                <span>
-                    {"<"}
-                    <span>objectives</span>
-                    {">"}
-                </span>
-                <br/>
 
-                {data.filter((row, index) => index !== 0)
-                    .map((row, index) => {
-                        return (
-                            <Objective key={index} row={row} />
-                        )
-                    })}
-                <span>
-                    {"</"}
-                    <span>objectives</span>
-                    {">"}
-                </span>
-            </code>
-        )
-    }
     function readObjectiveFile(data) {
         const tableElement = document.getElementById('objectiveText')
         ReactDOM.render(
             <>
-                <pre>{objectiveMap(data)}</pre>
-                <strong><p>Copy & Paste the text below and add to your books info.xml file.</p></strong>
+                <ObjectiveMap data={data} />
+                <XMLData data={data}/>
             </>, 
         tableElement)
     }
