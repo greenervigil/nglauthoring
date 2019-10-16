@@ -3,38 +3,13 @@ import React from 'react'
 export default function Objective({ row }) {
     return (
         <>
-        <span>
-            {"<"}
-            <span>objective</span>
-            {">"}
-        </span>
+        <code>&lt;objective&gt;</code>
             <br/>
-            <span>
-                {"<"}
-                <span>id</span>
-                {">"}
-                {row[0]}
-                {"</"}
-                <span>id</span>
-                {">"}
-            </span>
+            <code>&lt;id&gt;{row[0]}&lt;/id&gt;</code>
             <br/>
-            <span>
-                {"<"}
-                <span>name</span>
-                {">"}
-                {row[1]}
-                {"</"}
-                <span>name</span>
-                {">"}
-            </span>
-            <br/>
-        <span>
-            {"</"}
-            <span>objective</span>
-            {">"}
-        </span>
-        <br/>
+            <code>&lt;name&gt;{row[1]}&lt;/name&gt;</code>
+            <br />
+        <code>&lt;/objective&gt;</code>
         </>
     )
 }
