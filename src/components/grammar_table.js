@@ -1,6 +1,5 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
-import GrammarModal from './grammar_modal'
 import GrammarRow from './grammar_row'
 import GrammarTableHeader from './grammar_table_header'
 
@@ -23,7 +22,7 @@ export default function GrammarTable({ data, engine }) {
                 )}
             </Table.Body>
         </Table>
-        <GrammarModal />
+        {/*<GrammarModal />*/}
         </>
     )
 }
