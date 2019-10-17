@@ -6,17 +6,17 @@ export default function MainMenu() {
     return (
         <>
             <Grid stackable columns={2} >
-                {/*<Grid.Column>
+                <Grid.Column>
                     <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
-                </Grid.Column>*/}
+                </Grid.Column>
                 <Grid.Column>
                     <MenuCard name="Objectives" description="Create XML tags for objectives. "/>
                 </Grid.Column>
                 <Grid.Column>
-                    <MenuCard name="SRI" description="Create grammars from product file, compile, and debug for errors."/>
+                    <MenuCard name="SRI" description="Create grammar files, and CSV import files."/>
                 </Grid.Column>
                 <Grid.Column>
-                    <MenuCard name="Integrated Resources" description="Create a JSON for the additional Resources."/>
+                    <MenuCard name="Integrated Resources" description="Create Integrated Resources JSON."/>
                 </Grid.Column>
             </Grid>
         </>

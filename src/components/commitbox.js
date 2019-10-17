@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, Image} from 'semantic-ui-react'
+import {Button, Download2Icon } from 'react-magma-dom'
 
 export default function CommitBox({ data }) {
   function handleClick(event) {
@@ -12,13 +12,12 @@ export default function CommitBox({ data }) {
     link.click();
   }
   return (
-    <Form>
-      <Form.Group>
-        <Button primary onClick={handleClick}>
-          <Image name='download' />
+    <form>
+      <div className="form-group">
+        <Button color="marketing" icon={<Download2Icon />} onClick={handleClick}>
           Save To File
         </Button>
-      </Form.Group>
-    </Form>
+      </div>
+    </form>
   )
 }

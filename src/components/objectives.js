@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import Header from './header'
 import Footer from './footer'
 import CSVReader from 'react-csv-reader'
-import { Form } from 'semantic-ui-react'
 import ObjectiveMap from './objective_map'
-import XMLData from './xmldata'
+import SRIData from './sridata'
 
 export default function Objectives({ name }) {
 
@@ -14,7 +13,7 @@ export default function Objectives({ name }) {
         ReactDOM.render(
             <>
                 <ObjectiveMap data={data} />
-                <XMLData data={data}/>
+                <SRIData data={data}/>
             </>, 
         tableElement)
     }
@@ -24,10 +23,11 @@ export default function Objectives({ name }) {
         <div className="main">
             <h2>{name}</h2>
             <div className="container">
-                <Form>
-                    <label className="sr-only">CSV File Select</label>
-                    <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
-                </Form>
+                <form>
+                    <div className="form-group">
+                        <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
+                        </div>
+                </form>
             </div>
             <div className="container">
                 <span id="objectiveText"></span>

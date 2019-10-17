@@ -7,7 +7,7 @@ import {Grid} from 'semantic-ui-react'
 const BookConfig = (props) => (
     <>
     <Header name={props.name}/>
-        <div className="main">
+        <div className="container">
             <Grid stackable columns={2}>
                 <Grid.Column>
                     <MenuCard name="OWB" description="Online Work Book.  Single standalone book." />

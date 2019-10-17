@@ -3,7 +3,7 @@ import { Table, Icon } from 'semantic-ui-react'
 
 function checkGrammar(phrase) {
     if(!/\d/.test(phrase) && !/<[a-s][\s\S]*>/i.test(phrase) && !/[;&#]/i.test(phrase)) {
-        document.getElementById('alert').removeAttribute('hidden')
+        document.getElementById('alert_error').removeAttribute('hidden')
         return false
     } else {
         return true

@@ -5,6 +5,7 @@ import Footer from './footer';
 import GrammarTable from './grammar_table';
 import CSVReader from 'react-csv-reader';
 import GrammarCreate from './grammar_create'
+import { Alert } from 'react-magma-dom'
 
 export default function Grammar({ name }) {
     function readFile(data) {
@@ -25,9 +26,11 @@ export default function Grammar({ name }) {
             <h2>{name}</h2>
             <p>Upload CSV grammar file to evaluate grammar correctness.</p>
             <p><strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
-            <div className="alert alert-warning alert-dismissible" id="alert" role="alert" hidden>
-                <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-                <strong>Completed with Errors!</strong> Review table for errors.
+            <div id="alert_error" role="alert" hidden>
+                <Alert dismissable="true" closeLabel="Close" variant="danger" onDismiss={() => document.getElementById('alert_error').setAttribute('hidden', true)}>Compile completed with errors.  Review the table and correct any errors.</Alert>
+            </div>
+            <div id="alert_success" role="alert" hidden>
+                <Alert dismissable="true" closeLabel="Close" variant="success" onDismiss={() => {document.getElementById('alert_success').setAttribute('hidden', true)}}>Compile completed with errors.  Review the table and correct any errors.</Alert>
             </div>
             <form>
                 <div className="form-group">

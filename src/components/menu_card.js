@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import {Card, Button, Image} from 'semantic-ui-react'
+import {Card, Image} from 'semantic-ui-react'
+import { Button } from 'react-magma-dom'
 import IntegratedResources from './integrated_resources';
 import BookConfig from './book_config';
 import SRICongif from './sri_config';
@@ -32,7 +33,7 @@ export default function MenuCard({ name, description }) {
                 <Card.Meta>{description}</Card.Meta>
             </Card.Content>
             <Card.Content extra>
-                <Button primary name={name} onClick={handleClick}>Select</Button>
+                <Button block color="marketing" name={name} onClick={handleClick}>Select</Button>
             </Card.Content>
         </Card>
     )

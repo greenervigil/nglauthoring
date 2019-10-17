@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button } from 'react-magma-dom'
 
 const GrammarCreate = (props) => {
 
@@ -66,8 +66,8 @@ const GrammarCreate = (props) => {
     }
     return (
         <>
-            <Button primary onClick={handleClick}>Compile Grammar File</Button>
-            <Button primary>Export CSV</Button>
+            <Button color="marketing" onClick={handleClick}>Compile Grammar File</Button>
+            <Button color="marketing">Export CSV</Button>
         </>
     )
 }

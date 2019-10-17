@@ -206,7 +206,7 @@ export default function IntegratedResources({ name }) {
       <div className="container">
         <form>
           <div className="form-group">
-            <label>Book Abbreviation</label>
+            <label htmlFor="bookAbbr">Book Abbreviation</label>
             <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" />
           </div>
           <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
@@ -217,8 +217,6 @@ export default function IntegratedResources({ name }) {
           <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
           <strong>Well done!</strong> JSON creation completed.
         </div>
-      </div>
-      <div className="container">
         <CommitBox data={json}/>
       </div>
     </div>
