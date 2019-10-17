@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Open Sans';
 }
 
 *:before, *:after {
@@ -22,7 +23,7 @@ html, body {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #000;
   height: 175px;
   display: flex;
   flex-direction: column;
@@ -95,7 +96,7 @@ html, body {
 
 .App-footer {
   display: block;
-  background-color: #282c34;
+  background-color: #000;
   text-align: center;
   color: white;
   position: relative;
