@@ -1,0 +1,14 @@
+{
+    "extends": "cengage/react",
+    "settings": {
+      "react": {
+        "version": "16.10"
+      }
+    }, 
+    "rules": {
+        "prettier/prettier": "error",
+        "react/boolean-prop-naming": 1,
+        "react/prop-types": 1,
+        "jsx-a11y/heading-has-content": 0
+    }
+  }
