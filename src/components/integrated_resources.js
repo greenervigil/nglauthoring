@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './header'
 import CommitBox from './commitbox';
 import Footer from './footer';
 import CSVReader from 'react-csv-reader'
-import { Alert, Input } from 'react-magma-dom';
+import { Alert } from 'react-magma-dom';
 
 let json = {
   audio: {},
@@ -12,9 +12,14 @@ let json = {
 }
 
 export default function IntegratedResources({ name }) {
+
+  const [bookAbbr, setBookAbbr] = useState('')
+
+  function handleChange() {
+    setBookAbbr(book => book + document.getElementById('bookAbbr').value)
+  }
   function handleFileLoad(data) {
-    const book = document.getElementById('bookAbbr').value;
-    parseToJson(book, data);
+    parseToJson(bookAbbr, data);
   }
   function parseToJson(bookAbbr,data) {
     const path = "/media/books/" + bookAbbr + "/Resources/";
@@ -207,17 +212,16 @@ export default function IntegratedResources({ name }) {
       <div className="container">
         <form>
           <div className="form-group">
-            <Input id="bookAbbr" labelText="Book Abbreviation" placeholder="Book Abbreviation" required={true} />
+          <label htmlFor="bookAbbr">Book Abbreviation</label>
+            <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" onChange={handleChange}/>
           </div>
           <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
         </form>
       </div>
-      <div className="container">
-        <div className="alert-success" id="alert" role="alert" hidden>
-          <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
-        </div>
-        <CommitBox data={json}/>
+      <div className="alert-success" id="alert" role="alert" hidden>
+        <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
       </div>
+      <CommitBox data={json} bookAbbr={bookAbbr}/>
     </div>
     <Footer />
     </>

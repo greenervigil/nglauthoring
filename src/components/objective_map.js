@@ -9,10 +9,9 @@ export default function ObjectiveMap({ data }) {
                 {data.filter((row, index) => index !== 0)
                     .map((row, index) => {
                         return (
-                            <Objective key={index} row={row} />
+                            <Objective key={index} row={row} />   
                         )
                     })}
-            <br/>
             <code>&lt;/objectives&gt;</code>
         </pre>
     )

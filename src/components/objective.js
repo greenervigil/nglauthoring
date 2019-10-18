@@ -10,6 +10,7 @@ export default function Objective({ row }) {
             <code style={{paddingLeft: 40}}>&lt;name&gt;{row[1]}&lt;/name&gt;</code>
             <br />
         <code style={{paddingLeft: 20}}>&lt;/objective&gt;</code>
+        <br/>
         </>
     )
 }

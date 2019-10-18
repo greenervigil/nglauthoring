@@ -56,6 +56,7 @@ export default function Grammar({ name }) {
             </form>
             <div id="grammarTable"></div>
         </div>
+        &nbsp;
         <Footer />
         </>
     )

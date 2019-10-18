@@ -4,7 +4,7 @@ import Header from './header'
 import Footer from './footer'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from './objective_map'
-import SRIData from './sridata'
+import XMLData from './xmldata'
 
 export default function Objectives({ name }) {
 
@@ -13,7 +13,8 @@ export default function Objectives({ name }) {
         ReactDOM.render(
             <>
                 <ObjectiveMap data={data} />
-                <SRIData data={data}/>
+                <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
+                <XMLData data={data}/>
             </>, 
         tableElement)
     }
@@ -29,10 +30,8 @@ export default function Objectives({ name }) {
                         </div>
                 </form>
             </div>
-            <div className="container">
-                <span id="objectiveText"></span>
-            </div> 
-        </div>
+            <div className="container" id="objectiveText"></div> 
+        </div>&nbsp;
         <Footer />
         </>
     )

@@ -18,6 +18,7 @@ export default function SRIConfig() {
                     </Grid.Column>*/}
                 </Grid>
             </div>
+            &nbsp;
             <Footer />
         </>
     )
