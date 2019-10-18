@@ -7,10 +7,21 @@ import CSVReader from 'react-csv-reader';
 import GrammarCreate from './grammar_create'
 import { Alert } from 'react-magma-dom'
 
+/*const options = [
+    {
+        value: 'Multiple Choice', 
+        label: 'Multiple Choice'
+    }, 
+    {
+        value: 'Listening and Speaking', 
+        label: 'Listening and Speaking'
+    }
+]*/
+
 export default function Grammar({ name }) {
     function readFile(data) {
         const engine = document.getElementById("engine")//.getElementsByClassName("active")[0].innerText
-
+        
         const tableElement = document.getElementById('grammarTable')
         ReactDOM.render(
             <div className="container">
@@ -39,6 +50,7 @@ export default function Grammar({ name }) {
                         <option value="Multiple Choice">Multiple Choice</option>
                         <option value="Listening and Speaking">Listening and Speaking</option>
                     </select>
+                    {/*  FIX:  <Select id="engine" name="Select Engine Type:" options={options}/>*/}
                     <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                 </div>
             </form>

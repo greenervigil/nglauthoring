@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../ng_learning_whiteyellow.png';
+import logo from '../default-xs.png'//'../ng_learning_whiteyellow.png';
 
 export default function Footer() {
   return (

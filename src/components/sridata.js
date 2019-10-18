@@ -5,8 +5,8 @@ export default function SRIData({ data }) {
     console.log(data)
     return (
         <>
-            <strong><p>Copy & Paste the text below and add to your books info.xml file.</p></strong>
-            <Button color="marketing">Copy</Button>
+            <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
+            {/*<Button color="marketing">Copy</Button>*/}
         </>
     )
 }

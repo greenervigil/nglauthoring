@@ -13,7 +13,7 @@ export default function MainMenu() {
                     <MenuCard name="Objectives" description="Create XML tags for objectives. "/>
                 </Grid.Column>
                 <Grid.Column>
-                    <MenuCard name="SRI" description="Create grammar files, and CSV import files."/>
+                    <MenuCard name="SRI" description="Create grammar and CSV files."/>
                 </Grid.Column>
                 <Grid.Column>
                     <MenuCard name="Integrated Resources" description="Create Integrated Resources JSON."/>

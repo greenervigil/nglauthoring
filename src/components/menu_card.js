@@ -7,6 +7,7 @@ import BookConfig from './book_config';
 import SRICongif from './sri_config';
 import Grammar from './grammar';
 import Objectives from './objectives';
+import image from '../default.jpg'
 
 export default function MenuCard({ name, description }) {
     function handleClick(event) {
@@ -27,7 +28,7 @@ export default function MenuCard({ name, description }) {
     }
     return (
         <Card>
-        <Image src='https://picsum.photos/300'/>
+        <Image src={image} size='medium' bordered circular/>
             <Card.Content>
                 <Card.Header>{name}</Card.Header>
                 <Card.Meta>{description}</Card.Meta>

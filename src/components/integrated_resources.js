@@ -3,6 +3,7 @@ import Header from './header'
 import CommitBox from './commitbox';
 import Footer from './footer';
 import CSVReader from 'react-csv-reader'
+import { Alert, Input } from 'react-magma-dom';
 
 let json = {
   audio: {},
@@ -206,16 +207,14 @@ export default function IntegratedResources({ name }) {
       <div className="container">
         <form>
           <div className="form-group">
-            <label htmlFor="bookAbbr">Book Abbreviation</label>
-            <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" />
+            <Input id="bookAbbr" labelText="Book Abbreviation" placeholder="Book Abbreviation" required={true} />
           </div>
           <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
         </form>
       </div>
       <div className="container">
-        <div className="alert alert-success alert-dismissible" id="alert" role="alert" hidden>
-          <button type="button" className="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-          <strong>Well done!</strong> JSON creation completed.
+        <div className="alert-success" id="alert" role="alert" hidden>
+          <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
         </div>
         <CommitBox data={json}/>
       </div>
