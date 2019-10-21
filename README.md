@@ -1,3 +1,8 @@
+## Local Installation Instructions 
+To run the application locally, pull the most recent code from the repo.
+`npm install`
+`npm start`
+
 ## Available Scripts
 
 In the project directory, you can run:
