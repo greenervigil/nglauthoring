@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Header from './header'
-import CommitBox from './commitbox';
-import Footer from './footer';
+import CommitBox from './commitbox'
+import Footer from './footer'
 import CSVReader from 'react-csv-reader'
-import { Alert } from 'react-magma-dom';
+import { Alert } from 'react-magma-dom'
+import PropTypes from 'prop-types'
 
 let json = {
   audio: {},
@@ -19,11 +20,11 @@ export default function IntegratedResources({ name }) {
     setBookAbbr(book => book + document.getElementById('bookAbbr').value)
   }
   function handleFileLoad(data) {
-    parseToJson(bookAbbr, data);
+    parseToJson(bookAbbr, data)
   }
   function parseToJson(bookAbbr,data) {
-    const path = "/media/books/" + bookAbbr + "/Resources/";
-    const icon = "img/";
+    const path = "/media/books/" + bookAbbr + "/Resources/"
+    const icon = "img/"
     
     let audio = {
       display: "Audio",
@@ -31,27 +32,27 @@ export default function IntegratedResources({ name }) {
       zip: path + "Audio/Audio.zip",
       zipInstructor: path+ "Audio/Audio.zip",
       folders : []
-    };
+    }
     let video = {
       display: "Video",
       icon: icon + "video.jpg",
       zip: path + "video/Video.zip",
       zipInstructor: path + "video/Video.zip",
       folders : []
-    };
+    }
     let documents = {
       display: "Documents",
       icon: icon + "document.jpg",
       zip: path + "document/Documents.zip",
       zipInstructor: path+ "document/DocumentsInstructor.zip",
       folders : []
-    };
+    }
 
     data.forEach(element => {
-      const e = {};
+      const e = {}
 
-      e.name =element[1];
-      e.index = parseInt(element[2]);
+      e.name =element[1]
+      e.index = parseInt(element[2])
       e.subfolders = [
         {
           name: element[3] === '' ? element[1] : element[3],
@@ -65,22 +66,22 @@ export default function IntegratedResources({ name }) {
             }
           ]
         }
-      ];
+      ]
 
       if(element[6] === 'TRUE') {
         if(element[5].includes("web")) {
-          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 4) + 'vtt';
+          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 4) + 'vtt'
         }else {
-          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt';
+          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt'
         }
         
       }
 
       if(element[0] === 'Audio') {
         if(!audio.folders.length) {
-          audio.folders.push(e); 
+          audio.folders.push(e);
         } else {
-          let add;
+          let add
           //check the folder items checking the index if it does not exist set it to be added
           audio.folders.forEach(elem => {
             if(elem.index !== e.index) {
@@ -88,31 +89,31 @@ export default function IntegratedResources({ name }) {
             } else {
               add = false;
             }
-          });
+          })
 
           if (add) {
-            audio.folders.push(e);
+            audio.folders.push(e)
           } else  {
             audio.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder;
+                let subfolder
                 //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
                   if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true;
+                    subfolder = true
                   } else {
-                    subfolder = false;
+                    subfolder = false
                   }
                 });
 
                 if(subfolder) {
-                  el.subfolders.push(e.subfolders[0]);
+                  el.subfolders.push(e.subfolders[0])
                 } else {
                   el.subfolders.forEach(s => {
                     if(s.name === e.subfolders[0].name) {
-                      s.resources.push(e.subfolders[0].resources[0]);
+                      s.resources.push(e.subfolders[0].resources[0])
                     }
-                  });
+                  })
                 }
               }
             })
@@ -120,41 +121,41 @@ export default function IntegratedResources({ name }) {
         }
       }else if(element[0] === 'Video') {
         if(!video.folders.length) {
-          video.folders.push(e); 
+          video.folders.push(e)
         } else {
-          let add;
+          let add
           //check the folder items checking the index if it does not exist set it to be added
           video.folders.forEach(elem => {
             if(elem.index !== e.index) {
-              add = true;
+              add = true
             } else {
-              add = false;
+              add = false
             }
-          });
+          })
 
           if (add) {
-            video.folders.push(e);
+            video.folders.push(e)
           } else  {
             video.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder;
+                let subfolder
                 //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
                   if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true;
+                    subfolder = true
                   } else {
                     subfolder = false;
                   }
-                });
+                })
 
                 if(subfolder) {
                   el.subfolders.push(e.subfolders[0]);
                 } else {
                   el.subfolders.forEach(s => {
                     if(s.name === e.subfolders[0].name) {
-                      s.resources.push(e.subfolders[0].resources[0]);
+                      s.resources.push(e.subfolders[0].resources[0])
                     }
-                  });
+                  })
                 }
               }
             })
@@ -164,50 +165,50 @@ export default function IntegratedResources({ name }) {
         if(!documents.folders.length) {
           documents.folders.push(e); 
         } else {
-          let add;
+          let add
           //check the folder items checking the index if it does not exist set it to be added
           documents.folders.forEach(elem => {
             if(elem.index !== e.index) {
-              add = true;
+              add = true
             } else {
-              add = false;
+              add = false
             }
-          });
+          })
 
           if (add) {
-            documents.folders.push(e);
+            documents.folders.push(e)
           } else  {
             documents.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder = false;
+                let subfolder = false
                 //if index for the item matches check the subfolder name 
                 el.subfolders.forEach(sub => {
                   if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true;
+                    subfolder = true
                   } /*else {
                     subfolder = false;
                   }*/
-                });
+                })
 
                 if(subfolder) {
-                  el.subfolders.push(e.subfolders[0]);
+                  el.subfolders.push(e.subfolders[0])
                 } else {
                   el.subfolders.forEach(s => {
                     if(s.name === e.subfolders[0].name) {
-                      s.resources.push(e.subfolders[0].resources[0]);
+                      s.resources.push(e.subfolders[0].resources[0])
                     }
-                  });
+                  })
                 }
               }
             })
           }
         }
       }
-    });
-    json.audio = audio;
-    json.video = video;
-    json.document = documents;
-    document.getElementById('alert').removeAttribute('hidden');
+    })
+    json.audio = audio
+    json.video = video
+    json.document = documents
+    document.getElementById('alert').removeAttribute('hidden')
   }
   return (
     <>
@@ -231,4 +232,8 @@ export default function IntegratedResources({ name }) {
     <Footer />
     </>
   )
+}
+
+IntegratedResources.propTypes = {
+  name: PropTypes.string.isRequired
 }

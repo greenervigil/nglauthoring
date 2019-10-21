@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button } from 'react-magma-dom'
+import PropTypes from 'prop-types'
 
-const GrammarCreate = (props) => {
+export default function GrammarCreate({data, engine}) {
 
     const buildGrammar = (grammarArray) => {
         //grammarId
@@ -9,7 +10,7 @@ const GrammarCreate = (props) => {
         //public <.GRAMMARID> = <ANSWER> | <ANSWER> | <ANSWER>;
         //public <.GRAMMARID> = <ANSWER> | <ANSWER>;
         //public <.GRAMMARID> = <ANSWER>;
-        if (props.engine === 'Listening and Speaking') {
+        if (engine === 'Listening and Speaking') {
             //answer 1
             console.log(grammarArray[2])
             if (grammarArray[2] === '') {
@@ -19,7 +20,7 @@ const GrammarCreate = (props) => {
             } else {
                 grammarString += grammarArray[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
             }
-        } else if (props.engine === 'Multiple Choice'){
+        } else if (engine === 'Multiple Choice'){
             //answer 1
             if (grammarArray[4] === '') {
                 //skip
@@ -51,9 +52,8 @@ const GrammarCreate = (props) => {
 
     const handleClick = () => {
         let fileData = ''
-        props.data
-            .filter((row, index) => index !== 0)
-            .map((row, index) => (
+        data.filter((row, index) => index !== 0)
+            .map((row) => (
                 fileData += buildGrammar(row)
             )
         )
@@ -72,4 +72,7 @@ const GrammarCreate = (props) => {
     )
 }
 
-export default GrammarCreate
+GrammarCreate.propTypes = {
+    data: PropTypes.array.isRequired, 
+    engine: PropTypes.string.isRequired
+}

@@ -15,7 +15,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "cengage/react"
   },
   "browserslist": [
     ">0.2%",
@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "lodash": "4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-csv-reader": "^1.2.2",
     "react-dom": "^16.10.2",
@@ -34,7 +35,9 @@
   },
   "devDependencies": {
     "artifact": "^0.5.1",
+    "babel-eslint": "^10.0.3",
     "eslint": "^6.5.1",
+    "eslint-config-cengage": "^0.5.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-unicorn": "^12.1.0",

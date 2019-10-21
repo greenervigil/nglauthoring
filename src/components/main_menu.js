@@ -1,6 +1,6 @@
-import React from 'react';
-import MenuCard from './menu_card';
-import { Grid } from 'semantic-ui-react';
+import React from 'react'
+import MenuCard from './menu_card'
+import { Grid } from 'semantic-ui-react'
 
 export default function MainMenu() {
     return (
@@ -10,7 +10,7 @@ export default function MainMenu() {
                     <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
                 </Grid.Column>
                 <Grid.Column>
-                    <MenuCard name="Objectives" description="Create XML tags for objectives. "/>
+                    <MenuCard name="Objectives" description="Create XML tags for objectives."/>
                 </Grid.Column>
                 <Grid.Column>
                     <MenuCard name="SRI" description="Create grammar and CSV files."/>

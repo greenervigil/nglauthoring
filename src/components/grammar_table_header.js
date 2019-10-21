@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 export default function GrammarTableHeader({ headerRow }) {
     return (
@@ -13,3 +14,6 @@ export default function GrammarTableHeader({ headerRow }) {
     )
 }
 
+GrammarTableHeader.propTypes = {
+    headerRow: PropTypes.array.isRequired
+}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
 import {Button, Download2Icon } from 'react-magma-dom'
+import PropTypes from 'prop-types'
 
 export default function CommitBox({ data, bookAbbr }) {
-  function handleClick(event) {
+  function handleClick() {
     const fileData = JSON.stringify(data);
     const blob = new Blob([fileData], {type: "text/plain"});
     const url = URL.createObjectURL(blob);
@@ -20,4 +21,9 @@ export default function CommitBox({ data, bookAbbr }) {
       </div>
     </form>
   )
+}
+
+CommitBox.propTypes = {
+  bookAbbr: PropTypes.string.isRequired, 
+  data: PropTypes.object.isRequired
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Objective from './objective'
+import propTypes from 'prop-types'
 
 export default function ObjectiveMap({ data }) {
     return (
@@ -15,4 +16,8 @@ export default function ObjectiveMap({ data }) {
             <code>&lt;/objectives&gt;</code>
         </pre>
     )
+}
+
+ObjectiveMap.propTypes = {
+    data: propTypes.array.isRequired
 }

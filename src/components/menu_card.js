@@ -1,29 +1,30 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 import {Card, Image} from 'semantic-ui-react'
 import { Button } from 'react-magma-dom'
-import IntegratedResources from './integrated_resources';
-import BookConfig from './book_config';
-import SRICongif from './sri_config';
-import Grammar from './grammar';
-import Objectives from './objectives';
+import IntegratedResources from './integrated_resources'
+import BookConfig from './book_config'
+import SRICongif from './sri_config'
+import Grammar from './grammar'
+import Objectives from './objectives'
 import image from '../default.jpg'
+import PropTypes from 'prop-types'
 
 export default function MenuCard({ name, description }) {
     function handleClick(event) {
         const name = event.target.name
         if(name === 'Integrated Resources'){
-            ReactDOM.render(<IntegratedResources name="Integrated Resources"/>, document.getElementById('root'));
+            ReactDOM.render(<IntegratedResources name="Integrated Resources"/>, document.getElementById('root'))
         } else if(name === 'Book Configuration'){
-            ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'));
+            ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'))
         }else if (name === 'Objectives'){
-            ReactDOM.render(<Objectives name="Objectives"/>, document.getElementById('root'));
+            ReactDOM.render(<Objectives name="Objectives"/>, document.getElementById('root'))
         } else if (name === "SRI") {
-            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'));
+            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'))
         } else if (name === "SRI Grammar") {
-            ReactDOM.render(<Grammar name="SRI Grammars"/>, document.getElementById('root'));
+            ReactDOM.render(<Grammar name="SRI Grammars"/>, document.getElementById('root'))
         } else if (name === "SRI Server Stats") {
-            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'));
+            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'))
         }
     }
     return (
@@ -38,4 +39,9 @@ export default function MenuCard({ name, description }) {
             </Card.Content>
         </Card>
     )
+}
+
+MenuCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
 }

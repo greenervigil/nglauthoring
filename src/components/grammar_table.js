@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 import GrammarRow from './grammar_row'
 import GrammarTableHeader from './grammar_table_header'
+import PropTypes from 'prop-types'
 
 export default function GrammarTable({ data, engine }) {
     return (
@@ -26,5 +27,10 @@ export default function GrammarTable({ data, engine }) {
             {/*<GrammarModal />*/}
         </>
     )
+}
+
+GrammarTable.propTypes = {
+    data: PropTypes.array.isRequired,
+    engine: PropTypes.string.isRequired
 }
 

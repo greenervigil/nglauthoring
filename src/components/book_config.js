@@ -1,24 +1,29 @@
 import React from 'react'
-import Header from './header';
-import Footer from './footer';
-import MenuCard from './menu_card';
+import Header from './header'
+import Footer from './footer'
+import MenuCard from './menu_card'
 import {Grid} from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
-const BookConfig = (props) => (
-    <>
-    <Header name={props.name}/>
-        <div className="container">
-            <Grid stackable columns={2}>
-                <Grid.Column>
-                    <MenuCard name="OWB" description="Online Work Book.  Single standalone book." />
-                </Grid.Column>
-                <Grid.Column>
-                    <MenuCard name="Superproduct" description="Multiple single books linked together to form a single standalone book."/>
-                </Grid.Column>
-            </Grid>
-        </div>
-    <Footer />
-    </>
-);
+export default function BookConfig({name}) {
+    return (
+        <>
+            <Header name={name}/>
+                <div className="container">
+                    <Grid stackable columns={2}>
+                        <Grid.Column>
+                            <MenuCard name="OWB" description="Online Work Book.  Single standalone book." />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <MenuCard name="Superproduct" description="Multiple single books linked together to form a single standalone book."/>
+                        </Grid.Column>
+                    </Grid>
+                </div>
+            <Footer />
+        </>
+    )
+}
 
-export default BookConfig
+BookConfig.propTypes = {
+    name: PropTypes.string.isRequired
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function Objective({ row }) {
     return (
@@ -13,4 +14,8 @@ export default function Objective({ row }) {
         <br/>
         </>
     )
+}
+
+Objective.propTypes = {
+    row: PropTypes.array.isRequired
 }

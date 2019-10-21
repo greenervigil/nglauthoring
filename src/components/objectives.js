@@ -4,7 +4,7 @@ import Header from './header'
 import Footer from './footer'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from './objective_map'
-import XMLData from './xmldata'
+import PropTypes from 'prop-types'
 
 export default function Objectives({ name }) {
 
@@ -14,7 +14,6 @@ export default function Objectives({ name }) {
             <>
                 <ObjectiveMap data={data} />
                 <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
-                <XMLData data={data}/>
             </>, 
         tableElement)
     }
@@ -35,4 +34,8 @@ export default function Objectives({ name }) {
         <Footer />
         </>
     )
+}
+
+Objectives.propTypes = {
+    name: PropTypes.string.isRequired
 }
