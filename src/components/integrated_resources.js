@@ -68,7 +68,12 @@ export default function IntegratedResources({ name }) {
       ];
 
       if(element[6] === 'TRUE') {
-        e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt';
+        if(element[5].includes("web")) {
+          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 4) + 'vtt';
+        }else {
+          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt';
+        }
+        
       }
 
       if(element[0] === 'Audio') {
