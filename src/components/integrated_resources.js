@@ -49,62 +49,20 @@ export default function IntegratedResources({ name }) {
     }
 
     data.forEach(element => {
-      const e = {}
-
-      e.name =element[1]
-      e.index = parseInt(element[2])
-      e.subfolders = [
-        {
-          name: element[3] === '' ? element[1] : element[3],
-          resources : [
-            {
-              name:  element[4],
-              location: path + element[0] + '/' + element[5],
-              teacherOnly: (element[7] === 'TRUE'),
-              downloadable: (element[8] === 'TRUE'),
-              type: element[0].toLowerCase()
-            }
-          ]
-        }
-      ]
-
-      if(element[6] === 'TRUE') {
-        if(element[5].includes("web")) {
-          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 4) + 'vtt'
-        }else {
-          e.subfolders[0].resources[0].locationCC = path + element[0] + '/' + element[5].substring(0, element[5].length - 3) + 'vtt'
-        }
-        
-      }
+      const e = buildObject(element, path)
 
       if(element[0] === 'Audio') {
         if(!audio.folders.length) {
           audio.folders.push(e);
         } else {
-          let add
-          //check the folder items checking the index if it does not exist set it to be added
-          audio.folders.forEach(elem => {
-            if(elem.index !== e.index) {
-              add = true;
-            } else {
-              add = false;
-            }
-          })
-
+          const add = addToFolder(audio.folders, e)
           if (add) {
             audio.folders.push(e)
           } else  {
             audio.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder
                 //if index for the item matches check the subfolder name 
-                el.subfolders.forEach(sub => {
-                  if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true
-                  } else {
-                    subfolder = false
-                  }
-                });
+                const subfolder = addToSubFolder(el.subfolders, e)
 
                 if(subfolder) {
                   el.subfolders.push(e.subfolders[0])
@@ -123,30 +81,14 @@ export default function IntegratedResources({ name }) {
         if(!video.folders.length) {
           video.folders.push(e)
         } else {
-          let add
-          //check the folder items checking the index if it does not exist set it to be added
-          video.folders.forEach(elem => {
-            if(elem.index !== e.index) {
-              add = true
-            } else {
-              add = false
-            }
-          })
-
+          const add = addToFolder(video.folders, e)
           if (add) {
             video.folders.push(e)
           } else  {
             video.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder
                 //if index for the item matches check the subfolder name 
-                el.subfolders.forEach(sub => {
-                  if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true
-                  } else {
-                    subfolder = false;
-                  }
-                })
+                const subfolder = addToSubFolder(el.subfolders, e)
 
                 if(subfolder) {
                   el.subfolders.push(e.subfolders[0]);
@@ -165,30 +107,14 @@ export default function IntegratedResources({ name }) {
         if(!documents.folders.length) {
           documents.folders.push(e); 
         } else {
-          let add
-          //check the folder items checking the index if it does not exist set it to be added
-          documents.folders.forEach(elem => {
-            if(elem.index !== e.index) {
-              add = true
-            } else {
-              add = false
-            }
-          })
-
+          const add = addToFolder(documents.folders, e)
           if (add) {
             documents.folders.push(e)
           } else  {
             documents.folders.forEach(el => {
               if (el.index === e.index) {
-                let subfolder = false
                 //if index for the item matches check the subfolder name 
-                el.subfolders.forEach(sub => {
-                  if(sub.name !== e.subfolders[0].name) {
-                    subfolder = true
-                  } /*else {
-                    subfolder = false;
-                  }*/
-                })
+                const subfolder = addToSubFolder(el.subfolders, e)
 
                 if(subfolder) {
                   el.subfolders.push(e.subfolders[0])
@@ -210,6 +136,62 @@ export default function IntegratedResources({ name }) {
     json.document = documents
     document.getElementById('alert').removeAttribute('hidden')
   }
+
+  function buildObject(row, path) {
+    let object = {}
+    object.name =row[1]
+      object.index = parseInt(row[2])
+      object.subfolders = [
+        {
+          name: row[3] === '' ? row[1] : row[3],
+          resources : [
+            {
+              name:  row[4],
+              location: path + row[0] + '/' + row[5],
+              teacherOnly: (row[7] === 'TRUE'),
+              downloadable: (row[8] === 'TRUE'),
+              type: row[0].toLowerCase()
+            }
+          ]
+        }
+      ]
+      // check for closed captioning.  This will only be true for videos.
+      if(row[6] === 'TRUE') {
+        object.subfolders[0].resources[0].locationCC = path + getCCFile(row)
+      }
+
+      return object
+  }
+
+  function getCCFile(object) {
+    if(object[5].includes(".web")) {
+      return  object[0] + '/' + object[5].substring(0, object[5].length - 4) + 'vtt'
+    }else {
+      return  object[0] + '/' + object[5].substring(0, object[5].length - 3) + 'vtt'
+    }
+  }
+
+  function addToFolder(array, object) {
+    //check the folder items checking the index if it does not exist set it to be added
+    array.forEach(elem => {
+      if(elem.index !== object.index) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+  }
+
+  function addToSubFolder(array, object) {
+    array.forEach(sub => {
+      if(sub.name !== object.subfolders[0].name) {
+        return true
+      } else {
+        return false;
+      }
+    })
+  }
+  
   return (
     <>
     <Header />

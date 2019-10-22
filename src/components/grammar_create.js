@@ -11,43 +11,50 @@ export default function GrammarCreate({data, engine}) {
         //public <.GRAMMARID> = <ANSWER> | <ANSWER>;
         //public <.GRAMMARID> = <ANSWER>;
         if (engine === 'Listening and Speaking') {
-            //answer 1
-            console.log(grammarArray[2])
-            if (grammarArray[2] === '') {
-                //skip
-            } else if(grammarArray[2] !== '' && grammarArray[3] !== '') {
-                grammarString += grammarArray[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
-            } else {
-                grammarString += grammarArray[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-            }
+            grammarString += LSGrammar(grammarArray)
         } else if (engine === 'Multiple Choice'){
-            //answer 1
-            if (grammarArray[4] === '') {
-                //skip
-            } else if(grammarArray[4] !== '' && grammarArray[5] !== '') {
-                grammarString += grammarArray[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
-            } else {
-                grammarString += grammarArray[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-            }
-            //answer 2
-            if (grammarArray[5] === ''){
-                //skip
-            } else if(grammarArray[5] !== '' && grammarArray[6] !== '') {
-                grammarString += grammarArray[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| " 
-            }  else {
-                grammarString += grammarArray[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-            }
-            //answer 3
-            if (grammarArray[6] === '') {
-                //skip
-            } else if(grammarArray[6] !== '') {
-                grammarString += grammarArray[6].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-            } 
+            grammarString += MCGrammar(grammarArray)
         } else {
             //do nothing
         }       
 
         return grammarString
+    }
+
+    function LSGrammar(array) {
+        //answer 1
+        if (array[2] === '') {
+            //skip
+        } else if(array[2] !== '' && array[3] !== '') {
+            return array[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
+        } else {
+            return array[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+        }
+    }
+
+    function MCGrammar(array) {
+        //answer 1
+        if (array[4] === '') {
+            //skip
+        } else if(array[4] !== '' && array[5] !== '') {
+            return array[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
+        } else {
+            return array[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+        }
+        //answer 2
+        if (array[5] === ''){
+            //skip
+        } else if(array[5] !== '' && array[6] !== '') {
+            return array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| " 
+        }  else {
+            return array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+        }
+        //answer 3
+        if (array[6] === '') {
+            //skip
+        } else if(array[6] !== '') {
+            return array[6].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+        } 
     }
 
     const handleClick = () => {
