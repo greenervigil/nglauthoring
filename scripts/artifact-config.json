@@ -1,0 +1,10 @@
+{
+    "name": ".myelt-authoring",
+    "type": "application/json",
+    "schema": {
+        "type": "object", 
+        "properties": {
+            "appPort": {"default": "3000", "type":  "string" }
+        }
+    } 
+}

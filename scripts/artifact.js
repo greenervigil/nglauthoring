@@ -1,3 +1,4 @@
+/* eslint-disable no-unexpected-multiline */
 const fs = require('fs')
 const path = require('path')
 
@@ -14,7 +15,7 @@ const pkg = require(`${dir}/package.json`)
 
 const pattern = /build\.([0-9]*)/
 
-const latestVersionWithSamePatch = () => {
+function latestVersionWithSamePatch() {
   const lowerBound = `>=${pkg.version}-build.1`
   const upperBound = `<${semver.inc(pkg.version, 'patch')}-build.1`
   return `${lowerBound} ${upperBound}`
@@ -107,7 +108,7 @@ const writeConfigFile = () => {
   } = require('./artifact-config.json')
 
   const rcName = name.replace(/^./, '').replace(/rc$/, '')
-  const { publicKey, privateKey, config } = rc(rcName, {})
+  const { config } = rc(rcName, {})
 
   if (!config) {
     throw new Error(
@@ -119,7 +120,7 @@ const writeConfigFile = () => {
     )
   }
 
-  if (!publicKey || !privateKey) {
+  /*if (!publicKey || !privateKey) {
     throw new Error(
       logger.error(
         `\nRequired Keys are missing.  Run \`${chalk.inverse(
@@ -127,27 +128,27 @@ const writeConfigFile = () => {
         )}\` to update ${name} \n`,
       ),
     )
-  }
+  }*/
 
   logger.success(
     `Found existing env configs, ${name} (${rcName}), at ${config}`,
   )
 
-  const newConfigs = { publicKey, privateKey }
+  //const newConfigs = { publicKey, privateKey }
 
-  Object.entries(properties).forEach(([key, value]) => {
+  /*Object.entries(properties).forEach(([key, value]) => {
     if (value && value.default) {
       newConfigs[key] = value.default
     }
-  })
+  })*/
 
   const configPath = path.resolve(__dirname, '../../', name)
-  try {
+  /*try {
     logger.log(`\nUpdating environment configs, ${name}...`)
     fs.writeFileSync(configPath, JSON.stringify(newConfigs, null, 2))
   } catch (err) {
     throw new Error(logger.error(err))
-  }
+  }*/
 
   logger.success(`Successfully saved to ${configPath}`)
 }
