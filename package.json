@@ -1,5 +1,5 @@
 {
-  "name": "resources",
+  "name": "myelt-resources",
   "description": "Authoring companion tool to configuration specific changes to author content on MyELT.",
   "version": "0.1.0",
   "private": true,
