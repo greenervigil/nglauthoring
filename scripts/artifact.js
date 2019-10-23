@@ -10,8 +10,8 @@ const semver = require('semver')
 const logger = require('./helpers/logger')
 const artifactConfig = require('./artifact-config.json')
 
-const dir = `${__dirname}/../../`
-const pkg = require(`${dir}/package.json`)
+//const dir = `${__dirname}/..`
+const pkg = require('../package.json')//`${dir}/package.json`)
 
 const pattern = /build\.([0-9]*)/
 
@@ -93,7 +93,7 @@ const writeArtifact = pkg => {
   } else {
     logger.log('Publishing Artifact...')
     AG.cmds
-      .publish(artifact, null, dir)
+      .publish(artifact, null, '${dirname}/..')//dir)
       .then(() => logger.success(`Success Publishing: ${pkg.version}`))
       .catch(e => {
         throw new Error(logger.error(`Error Publishing AG: ${e}`))
@@ -103,9 +103,8 @@ const writeArtifact = pkg => {
 
 const writeConfigFile = () => {
   const {
-    name,
-    schema: { properties },
-  } = require('./artifact-config.json')
+    name
+  } = require('./artifact-config.json')//schema: { properties },
 
   const rcName = name.replace(/^./, '').replace(/rc$/, '')
   const { config } = rc(rcName, {})
