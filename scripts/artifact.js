@@ -1,4 +1,3 @@
-/* eslint-disable no-unexpected-multiline */
 const fs = require('fs')
 const path = require('path')
 
@@ -27,7 +26,7 @@ process.on('unhandledRejection', unhandledError => {
   throw unhandledError
 })
 
-(async () => {
+;(async () => {
   await AG.cmds
     .resolve({ name: pkg.name, version: latestVersionWithSamePatch() })
     .then(latest => {
@@ -67,7 +66,7 @@ const writeArtifact = pkg => {
   logger.log(`AG's next version: ${buildOutput.version}`)
 
   try {
-    const buildDir = `${__dirname}/../../build`
+    const buildDir = `${__dirname}/../build`
     const buildOutputPath = path.resolve(`${buildDir}/buildOutput.json`)
 
     if (!fs.existsSync(buildDir)) {
@@ -93,7 +92,7 @@ const writeArtifact = pkg => {
   } else {
     logger.log('Publishing Artifact...')
     AG.cmds
-      .publish(artifact, null, '${dirname}/..')//dir)
+      .publish(artifact, null, `${__dirname}/..`)//dir)
       .then(() => logger.success(`Success Publishing: ${pkg.version}`))
       .catch(e => {
         throw new Error(logger.error(`Error Publishing AG: ${e}`))
