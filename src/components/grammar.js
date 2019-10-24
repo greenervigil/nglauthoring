@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Header from './header'
 import Footer from './footer'
 import GrammarTable from './grammar_table'
 import CSVReader from 'react-csv-reader'
 import GrammarCreate from './grammar_create'
-import { Alert } from 'react-magma-dom'
+import { Alert, Select } from 'react-magma-dom'
 import PropTypes from 'prop-types'
 
-/*const options = [
+const options = [
     {
         value: 'Multiple Choice', 
         label: 'Multiple Choice'
@@ -17,9 +17,10 @@ import PropTypes from 'prop-types'
         value: 'Listening and Speaking', 
         label: 'Listening and Speaking'
     }
-]*/
+]
 
 export default function Grammar({ name }) {
+
     function readFile(data) {
         const engine = document.getElementById("engine")//.getElementsByClassName("active")[0].innerText
         
@@ -27,7 +28,7 @@ export default function Grammar({ name }) {
         ReactDOM.render(
             <div className="container">
                 <GrammarTable data={data} engine={engine.options[engine.selectedIndex].text}/>
-                <GrammarCreate data={data} engine={engine}/>
+                <GrammarCreate data={data} engine={engine.options[engine.selectedIndex].text}/>
             </div>, 
         tableElement)
     }
@@ -46,12 +47,12 @@ export default function Grammar({ name }) {
             </div>
             <form>
                 <div className="form-group">
-                    <label className="sr-only" htmlFor="engine">Select Engine Type</label>
+                    <label htmlFor="engine">Select Engine Type</label>
                     <select className="form-control" id="engine">
                         <option value="Multiple Choice">Multiple Choice</option>
                         <option value="Listening and Speaking">Listening and Speaking</option>
                     </select>
-                    {/*  FIX:  <Select id="engine" name="Select Engine Type:" options={options}/>*/}
+                    {/*<Select id="engine" name="Select Engine Type:" options={options} onChange={handleChange}/>*/}
                     <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                 </div>
             </form>
