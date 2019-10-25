@@ -21,14 +21,18 @@ const options = [
 
 export default function Grammar({ name }) {
 
+    const [engine, setEngine] = useState('')
+
+    function handleChange(option) {
+        setEngine(option.value)
+    }
+
     function readFile(data) {
-        const engine = document.getElementById("engine")//.getElementsByClassName("active")[0].innerText
-        
         const tableElement = document.getElementById('grammarTable')
         ReactDOM.render(
             <div className="container">
-                <GrammarTable data={data} engine={engine.options[engine.selectedIndex].text}/>
-                <GrammarCreate data={data} engine={engine.options[engine.selectedIndex].text}/>
+                <GrammarTable data={data} engine={engine}/>
+                <GrammarCreate data={data} engine={engine}/>
             </div>, 
         tableElement)
     }
@@ -47,12 +51,12 @@ export default function Grammar({ name }) {
             </div>
             <form>
                 <div className="form-group">
-                    <label htmlFor="engine">Select Engine Type</label>
-                    <select className="form-control" id="engine">
-                        <option value="Multiple Choice">Multiple Choice</option>
-                        <option value="Listening and Speaking">Listening and Speaking</option>
-                    </select>
-                    {/*<Select id="engine" name="Select Engine Type:" options={options} onChange={handleChange}/>*/}
+                    <Select 
+                        id="engine" 
+                        name="Select Engine Type" 
+                        labelText="Select engine type" 
+                        options={options} 
+                        onChange={(handleChange)}/>
                     <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                 </div>
             </form>

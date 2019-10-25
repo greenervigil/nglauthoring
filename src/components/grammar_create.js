@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import { CSVLink } from 'react-csv'
 import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar } from '../utils/grammar-utils'
+import ExportCSV from './export_csv'
 
 export default function GrammarCreate({data, engine}) {
-    const buildGrammar = (grammarArray) => {
+    function buildGrammar(grammarArray) {
         //grammarId
         let grammarString = "public <" + createGrammarId(grammarArray) + "> = "
         //public <.GRAMMARID> = <ANSWER> | <ANSWER> | <ANSWER>;
@@ -22,7 +22,7 @@ export default function GrammarCreate({data, engine}) {
         return grammarString
     }
 
-    const handleClick = () => {
+    function handleGrammarSubmit() {
         let fileData = ''
         data.filter((row, index) => index !== 0)
             .map((row) => (
@@ -37,10 +37,23 @@ export default function GrammarCreate({data, engine}) {
         link.click()
     }
 
+    function csvOutput() {
+        //we need to add the grammar id to the output data so vendor can import csv into their system with the ids
+        let configuredData = []
+        data.map((row, index) => {
+            if (index !== 0) {
+                row[3] = createGrammarId(row)
+            }
+            configuredData.push(row)
+        })
+        console.log(configuredData)
+        return configuredData
+    }
+
     return (
-        <form onSubmit={handleClick} >
+        <form onSubmit={handleGrammarSubmit} >
             <Button color="marketing" type="submit">Compile Grammar File</Button>
-            <CSVLink data={data}><Button color="marketing">Download to CSV</Button></CSVLink>
+            <ExportCSV data={csvOutput()} />
         </form>
     )
 }
