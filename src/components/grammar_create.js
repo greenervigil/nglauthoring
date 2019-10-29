@@ -46,7 +46,6 @@ export default function GrammarCreate({data, engine}) {
             }
             configuredData.push(row)
         })
-        console.log(configuredData)
         return configuredData
     }
 

@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Card, Image} from 'semantic-ui-react'
+import {Card} from 'semantic-ui-react'
 import { Button } from 'react-magma-dom'
 import IntegratedResources from './integrated_resources'
 import BookConfig from './book_config'
 import SRICongif from './sri_config'
 import Grammar from './grammar'
 import Objectives from './objectives'
-import image from '../default.jpg'
 import PropTypes from 'prop-types'
 
 export default function MenuCard({ name, description }) {
@@ -29,7 +28,6 @@ export default function MenuCard({ name, description }) {
     }
     return (
         <Card>
-        <Image src={image} size='medium' bordered circular/>
             <Card.Content>
                 <Card.Header>{name}</Card.Header>
                 <Card.Meta>{description}</Card.Meta>

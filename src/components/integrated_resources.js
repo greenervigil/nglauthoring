@@ -3,8 +3,9 @@ import Header from './header'
 import CommitBox from './commitbox'
 import Footer from './footer'
 import CSVReader from 'react-csv-reader'
-import { Alert } from 'react-magma-dom'
+import { Alert} from 'react-magma-dom'
 import PropTypes from 'prop-types'
+import ReturnHome from './return_home'
 
 let json = {
   audio: {},
@@ -195,22 +196,21 @@ export default function IntegratedResources({ name }) {
   return (
     <>
     <Header />
-    <div className="main">
-      <h2>{name}</h2>
-      <div className="container">
-        <form>
-          <div className="form-group">
-          <label htmlFor="bookAbbr">Book Abbreviation</label>
-            <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" onChange={handleChange}/>
-          </div>
-          <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
-        </form>
-      </div>
-      <div className="alert-success" id="alert" role="alert" hidden>
-        <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
-      </div>
-      <CommitBox data={json} bookAbbr={bookAbbr}/>
+    <ReturnHome />
+    <div className="container">
+    <h2>{name}</h2>
+      <form>
+        <div className="form-group">
+        <label htmlFor="bookAbbr">Book Abbreviation</label>
+          <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" onChange={handleChange}/>
+        </div>
+        <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
+      </form>
     </div>
+    <div className="alert-success" id="alert" role="alert" hidden>
+      <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
+    </div>
+    <CommitBox data={json} bookAbbr={bookAbbr}/>
     <Footer />
     </>
   )

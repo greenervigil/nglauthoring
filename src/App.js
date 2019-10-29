@@ -1,16 +1,16 @@
 import React from 'react';
-import Home from './components/home';
 
 import './App.css';
 import Header from './components/header';
 import Footer from './components/footer';
+import MainMenu from './components/main_menu';
 
 
 export default function App() {
   return (
     <>
       <Header />
-      <Home />
+      <MainMenu />
       <Footer />
     </>
   )

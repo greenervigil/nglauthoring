@@ -8,8 +8,13 @@
 }
 
 html, body {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   position: relative;
+}
+#main {
+  margin: 100px;
 }
 
 .App {
@@ -99,11 +104,10 @@ html, body {
   background-color: #000;
   text-align: center;
   color: white;
-  position: relative;
-  bottom: 0;
-  height: 200px;
+  position: fixed;
+  height: 100px;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 70px;
   padding-top: 50px;
   padding-bottom: 50px;
 }

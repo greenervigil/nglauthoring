@@ -5,6 +5,7 @@ import Footer from './footer'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from './objective_map'
 import PropTypes from 'prop-types'
+import ReturnHome from './return_home'
 
 export default function Objectives({ name }) {
 
@@ -20,17 +21,16 @@ export default function Objectives({ name }) {
     return (
         <>
         <Header />
-        <div className="main">
+        <ReturnHome />
+        <div className="container">
             <h2>{name}</h2>
-            <div className="container">
-                <form>
-                    <div className="form-group">
-                        <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
-                        </div>
-                </form>
-            </div>
-            <div className="container" id="objectiveText"></div> 
-        </div>&nbsp;
+            <form>
+                <div className="form-group">
+                    <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
+                    </div>
+            </form>
+        </div>
+        <div className="container" id="objectiveText"></div> 
         <Footer />
         </>
     )

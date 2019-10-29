@@ -13,13 +13,15 @@ export default function CommitBox({ data, bookAbbr }) {
     link.click();
   }
   return (
-    <form onSubmit={handleClick}>
-      <div className="form-group">
-        <Button type="submit" color="marketing" icon={<Download2Icon />}>
-          Save to file
-        </Button>
-      </div>
-    </form>
+    <div className="container">
+      <form onSubmit={handleClick}>
+        <div className="form-group">
+          <Button type="submit" color="marketing" icon={<Download2Icon />}>
+            Save to file
+          </Button>
+        </div>
+      </form>
+    </div>
   )
 }
 

@@ -7,6 +7,7 @@ import CSVReader from 'react-csv-reader'
 import GrammarCreate from './grammar_create'
 import { Alert, Select } from 'react-magma-dom'
 import PropTypes from 'prop-types'
+import ReturnHome from './return_home'
 
 const options = [
     {
@@ -39,7 +40,8 @@ export default function Grammar({ name }) {
     return (
         <>
         <Header />
-        <div className="main">
+        <ReturnHome />
+        <div className="container">
             <h2>{name}</h2>
             <p>Upload CSV grammar file to evaluate grammar correctness.</p>
             <p><strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
