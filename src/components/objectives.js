@@ -24,11 +24,13 @@ export default function Objectives({ name }) {
         <ReturnHome />
         <div className="container">
             <h2>{name}</h2>
-            <form>
-                <div className="form-group">
-                    <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
+            <div className="container">
+                <form>
+                    <div className="form-group">
+                        <CSVReader cssInputClass="" label="Select CSV with Objective Resources" onFileLoaded={readObjectiveFile} />
                     </div>
-            </form>
+                </form>
+            </div>
         </div>
         <div className="container" id="objectiveText"></div> 
         <Footer />

@@ -51,17 +51,19 @@ export default function Grammar({ name }) {
             <div id="alert_success" role="alert" hidden>
                 <Alert dismissable="true" closeLabel="Close" variant="success" onDismiss={() => {document.getElementById('alert_success').setAttribute('hidden', true)}}>Compile completed with errors.  Review the table and correct any errors.</Alert>
             </div>
-            <form>
-                <div className="form-group">
-                    <Select 
-                        id="engine" 
-                        name="Select Engine Type" 
-                        labelText="Select engine type" 
-                        options={options} 
-                        onChange={(handleChange)}/>
-                    <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
-                </div>
-            </form>
+            <div className="container">
+                <form>
+                    <div className="form-group">
+                        <Select 
+                            id="engine" 
+                            name="Select Engine Type" 
+                            labelText="Select engine type" 
+                            options={options} 
+                            onChange={(handleChange)}/>
+                        <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
+                    </div>
+                </form>
+            </div>
             <div id="grammarTable"></div>
         </div>
         &nbsp;

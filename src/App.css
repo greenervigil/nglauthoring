@@ -8,23 +8,13 @@
 }
 
 html, body {
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  position: relative;
 }
+
 #main {
   margin: 100px;
-}
-
-.App {
-  padding-bottom: 0px;
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  overflow: auto;
+  padding-bottom: 100px;
 }
 
 .App-header {
@@ -38,76 +28,22 @@ html, body {
   color: white;
 }
 
-.fileCompile {
-  padding: 10px;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-}
-
-.jsonbody {
-  padding: 10px;
-  justify-content: center;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.bookSelect {
-  margin: 10px;
-}
-
-.main {
-  padding: 100px;
-}
-
-.menu {
-  text-align: center;
-}
-
-.menu_block {
-  background-color: #61dafb;
-  display: inline-block;
-  height: 200px;
-  padding: 10px;
-}
-
-#textArea {
-  white-space: pre-wrap;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .container {
   padding: 15px;
-  margin: 10px auto;
-}
-
-.csv-input {
-  padding: 10px;
-  display: block;
-  margin: 15px auto;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: 50px;
+  padding-bottom: 70px;
+  min-height: 100%;
 }
 
 .App-footer {
-  display: block;
   background-color: #000;
   text-align: center;
+  padding-top: 25px;
   color: white;
-  position: fixed;
-  height: 100px;
-  width: 100%;
-  margin-top: 70px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  position: relative;
+  height: 155px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clear: both;
 }
