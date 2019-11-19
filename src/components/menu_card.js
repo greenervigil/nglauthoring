@@ -7,6 +7,7 @@ import BookConfig from './book_config'
 import SRICongif from './sri_config'
 import Grammar from './grammar'
 import Objectives from './objectives'
+import ProfileSelect from './outcomes/profile_select'
 import PropTypes from 'prop-types'
 
 export default function MenuCard({ name, description }) {
@@ -24,6 +25,8 @@ export default function MenuCard({ name, description }) {
             ReactDOM.render(<Grammar name="SRI Grammars"/>, document.getElementById('root'))
         } else if (name === "SRI Server Stats") {
             ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'))
+        } else if (name == "Outcomes"){
+            ReactDOM.render(<ProfileSelect name="SRI Grammars"/>, document.getElementById('root'))
         }
     }
     return (
