@@ -22,7 +22,8 @@ export default function GrammarCreate({data, engine}) {
         return grammarString
     }
 
-    function handleGrammarSubmit() {
+    function handleGrammarSubmit(event) {
+        event.preventDefault();
         let fileData = ''
         data.filter((row, index) => index !== 0)
             .map((row) => (
