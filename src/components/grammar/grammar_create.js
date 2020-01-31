@@ -41,7 +41,7 @@ export default function GrammarCreate({data, engine}) {
     function csvOutput() {
         //we need to add the grammar id to the output data so vendor can import csv into their system with the ids
         let configuredData = []
-        data.map((row, index) => {
+        data.forEach((row, index) => {
             if (index !== 0) {
                 row[3] = createGrammarId(row)
             }
