@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Header from './header'
-import CommitBox from './commitbox'
-import Footer from './footer'
+import Header from '../header'
+import CommitBox from '../commit/commitbox'
+import Footer from '../footer'
 import CSVReader from 'react-csv-reader'
 import { Alert} from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import ReturnHome from './return_home'
+import ReturnHome from '../main_menu/return_home'
 
 let json = {
   audio: {},

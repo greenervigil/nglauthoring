@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar } from '../utils/grammar-utils'
-import ExportCSV from './export_csv'
+import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar } from '../../utils/grammar-utils'
+import ExportCSV from '../export_csv'
 
 export default function GrammarCreate({data, engine}) {
     function buildGrammar(grammarArray) {

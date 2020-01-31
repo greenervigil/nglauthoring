@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from './header'
-import Footer from './footer'
+import Header from '../header'
+import Footer from '../footer'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from './objective_map'
 import PropTypes from 'prop-types'
-import ReturnHome from './return_home'
+import ReturnHome from '../main_menu/return_home'
 
 export default function Objectives({ name }) {
 

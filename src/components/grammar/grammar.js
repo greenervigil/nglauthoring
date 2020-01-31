@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import Header from './header'
-import Footer from './footer'
+import Header from '../header'
+import Footer from '../footer'
 import GrammarTable from './grammar_table'
 import CSVReader from 'react-csv-reader'
 import GrammarCreate from './grammar_create'
 import { Alert, Select } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import ReturnHome from './return_home'
+import ReturnHome from '../main_menu/return_home'
 
 const options = [
     {

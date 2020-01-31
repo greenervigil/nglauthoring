@@ -8,6 +8,7 @@ const GrammarModal = () => (
         <Modal.Content>
             <Modal.Description>
                 <Header>Enter in the grammar information.</Header>
+                {/*eslint-disable-next-line react/no-unescaped-entities*/}
                 <p>All numbers need to be spelled out in the answer text and illegal characters consisting of ".", ",", "?", "!", "-", "--", ";", "&#60;p&#62;", "&#60;/p&#62;", "’" and will be removed when the grammar file is created.</p>
             </Modal.Description>
             <GrammarForm />

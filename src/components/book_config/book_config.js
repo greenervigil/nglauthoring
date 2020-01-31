@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from './header'
-import Footer from './footer'
-import MenuCard from './menu_card'
+import Header from '../header'
+import Footer from '../footer'
+import MenuCard from '../main_menu/menu_card'
 import {Grid} from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
