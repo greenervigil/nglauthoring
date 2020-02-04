@@ -5,7 +5,7 @@ import Footer from '../footer'
 import GrammarTable from './grammar_table'
 import CSVReader from 'react-csv-reader'
 import GrammarCreate from './grammar_create'
-import { Alert, Select } from 'react-magma-dom'
+import { Alert, Select, Input } from 'react-magma-dom'
 import PropTypes from 'prop-types'
 import ReturnHome from '../main_menu/return_home'
 
@@ -60,6 +60,13 @@ export default function Grammar({ name }) {
                             labelText="Select engine type" 
                             options={options} 
                             onChange={(handleChange)}/>
+                        <Input labelText="Product Name" />
+                        <Input labelText="Product ID" />
+                        <p>Choose an activity number range:</p>
+                        <div style={{display: 'flex', justifyContent: 'flex-start'}}>
+                            <Input labelText="Start" type="number" inputStyle={{width: 200, marginRight: 25}}/>
+                            <Input labelText="End" type="number" inputStyle={{width: 200}}/>
+                        </div>
                         <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                     </div>
                 </form>
