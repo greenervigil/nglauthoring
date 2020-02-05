@@ -23,9 +23,26 @@ const options = [
 export default function Grammar({ name }) {
 
     const [engine, setEngine] = useState('')
+    const [productName, setProductName] = useState('')
+    const [productId, setProductId] = useState('')
+    const [start, setStart] = useState(1)
+    const [end, setEnd] = useState(1)
 
     function handleChange(option) {
         setEngine(option.value)
+    }
+
+    function handleInputChange(event) {
+        const name = event.target.name
+        if(name === 'product name') {
+            setProductName(event.target.value)
+        } else if (name === 'product ID') {
+            setProductId(event.target.value)
+        } else if (name === 'start') {
+            setStart(Number(event.target.value))
+        } else if (name === 'end'){
+            setEnd(Number(event.target.value))
+        }
     }
 
     function readFile(data) {
@@ -33,7 +50,7 @@ export default function Grammar({ name }) {
         ReactDOM.render(
             <div className="container">
                 <GrammarTable data={data} engine={engine}/>
-                <GrammarCreate data={data} engine={engine}/>
+                <GrammarCreate data={data} engine={engine} productName={productName} productId={productId} start={start} end={end}/>
             </div>, 
         tableElement)
     }
@@ -43,13 +60,12 @@ export default function Grammar({ name }) {
         <ReturnHome />
         <div className="container">
             <h2>{name}</h2>
-            <p>Upload CSV grammar file to evaluate grammar correctness.</p>
-            <p><strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
+            <p>Upload CSV grammar file to evaluate grammar correctness, create SRI grammar files, and test bench configuration files.  <strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
             <div id="alert_error" role="alert" hidden>
                 <Alert dismissable="true" closeLabel="Close" variant="danger" onDismiss={() => document.getElementById('alert_error').setAttribute('hidden', true)}>Compile completed with errors.  Review the table and correct any errors.</Alert>
             </div>
             <div id="alert_success" role="alert" hidden>
-                <Alert dismissable="true" closeLabel="Close" variant="success" onDismiss={() => {document.getElementById('alert_success').setAttribute('hidden', true)}}>Compile completed with errors.  Review the table and correct any errors.</Alert>
+                <Alert dismissable="true" closeLabel="Close" variant="success" onDismiss={() => {document.getElementById('alert_success').setAttribute('hidden', true)}}>Success!</Alert>
             </div>
             <div className="container">
                 <form>
@@ -60,12 +76,12 @@ export default function Grammar({ name }) {
                             labelText="Select engine type" 
                             options={options} 
                             onChange={(handleChange)}/>
-                        <Input labelText="Product Name" />
-                        <Input labelText="Product ID" />
+                        <Input name="product name" type="text" labelText="Product name" helperMessage="Enter the Product Name like 'My World Link Online 3e'" onChange={handleInputChange}/>
+                        <Input name="product ID" type="text" labelText="Product ID" helperMessage="The Product ID is sometimes the Discipline like 'MWLO3e'" onChange={handleInputChange}/>
                         <p>Choose an activity number range:</p>
                         <div style={{display: 'flex', justifyContent: 'flex-start'}}>
-                            <Input labelText="Start" type="number" inputStyle={{width: 200, marginRight: 25}}/>
-                            <Input labelText="End" type="number" inputStyle={{width: 200}}/>
+                            <Input name="start" labelText="Start" labelVisuallyHidden type="number" inputStyle={{width: 200, marginRight: 25}} placeholder="1" onChange={handleInputChange}/> 
+                            <Input name="end" labelText="End" labelVisuallyHidden type="number" inputStyle={{width: 200}} placeholder="100" onChange={handleInputChange}/>
                         </div>
                         <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
                     </div>
