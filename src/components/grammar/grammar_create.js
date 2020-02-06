@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar } from '../../utils/grammar-utils'
+import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar, downloadFile } from '../../utils/grammar-utils'
 import ExportCSV from '../export_csv'
 
-export default function GrammarCreate({data, engine, productName, productId, start, end}) {
-    const [activityCount, setActivityCount] = useState(start)
+export default function GrammarCreate({data, engine, productName, productId, start}) {
+    let count = start
     function buildGrammar(grammarArray) {
         //grammarId
         let grammarString = "public <" + createGrammarId(grammarArray) + "> = "
@@ -19,7 +19,6 @@ export default function GrammarCreate({data, engine, productName, productId, sta
         } else {
             //do nothing
         }       
-
         return grammarString
     }
 
@@ -31,12 +30,7 @@ export default function GrammarCreate({data, engine, productName, productId, sta
                 fileData += buildGrammar(row)
             )
         )
-        const blob = new Blob([fileData], {type: "text/plain"})
-        const url = URL.createObjectURL(blob)
-        const link = document.createElement('a')
-        link.download = "grammar.grm"
-        link.href = url
-        link.click()
+        downloadFile(fileData, "grammar.grm")
     }
 
     function csvOutput() {
@@ -52,21 +46,17 @@ export default function GrammarCreate({data, engine, productName, productId, sta
     }
 
     function getActivityId() {
-        //const count = activityCount
-        if (activityCount < end) {
-            console.log('here')
-            setActivityCount(c => c + 1)
-        } else {
-            alert('max number count of ' + end + ' has been reached')
-        }
-        return activityCount
+        let activityId = count
+        count++
+        return activityId
     }
 
     function createGrammarObject(dataArray) {
         /*JSON object should contain grammarId, scenario, activity-type, activity, prompt, productId, grammar, activityId, resultMode
         */
+       const grammar = createGrammarId(dataArray)
         let grammarObj = {
-            "grammarId": createGrammarId(dataArray),
+            "grammarId": grammar,
             "activity-type": "",
             "productId": productId,
             "activityId": getActivityId()
@@ -83,31 +73,27 @@ export default function GrammarCreate({data, engine, productName, productId, sta
             grammarObj.scenario = "Answer the Question " + productName;
             grammarObj['activity-type'] = "question";
             grammarObj.activity = [dataArray[4], dataArray[5], dataArray[6]]
-            grammarObj.prompt = dataArray[2]
+            grammarObj.prompt = (dataArray[2] !== "") ? dataArray[2] : grammar
             grammarObj.resultMode = "result_interpretation"
         }
-
         return grammarObj
     }
 
     function createJsonObject(event) {
         event.preventDefault()
         let jsonData = []
-        
         data.filter((row, index) => index !== 0).forEach((row) => {
             jsonData.push(createGrammarObject(row))
         })
-        console.log(jsonData)
+        downloadFile(JSON.stringify(jsonData), "config.json")
     }
 
     return (
-        <>
-            <form onSubmit={handleGrammarSubmit} >
-                <Button color="marketing" type="submit">Compile Grammar File</Button>
-                <Button color="marketing" onClick={createJsonObject} >Compile JSON</Button>
-            </form>
+        <form onSubmit={handleGrammarSubmit} >
+            <Button color="marketing" type="submit">Compile Grammar File</Button>
+            <Button color="marketing" onClick={createJsonObject} >Compile JSON</Button>
             <ExportCSV data={csvOutput()} />
-        </>
+        </form>
     )
 }
 
@@ -116,6 +102,5 @@ GrammarCreate.propTypes = {
     engine: PropTypes.string.isRequired,
     productName: PropTypes.string.isRequired,
     productId: PropTypes.string.isRequired,
-    start: PropTypes.number.isRequired,
-    end: PropTypes.number.isRequired
+    start: PropTypes.number.isRequired
 }

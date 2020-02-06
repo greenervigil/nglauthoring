@@ -33,3 +33,12 @@ export const MultipleChoiceGrammar = (array) => {
         } 
         return multipleChoiceString
 }
+
+export const downloadFile = (data, fileName) => {
+    const blob = new Blob([data], {type: "text/plain"})
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.download = fileName
+    link.href = url
+    link.click()
+}

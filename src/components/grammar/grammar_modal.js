@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Button, Header } from 'semantic-ui-react';
-import GrammarForm from './grammar_form';
+import GrammarForm from './grammar_modal_form';
 /*<Modal trigger={<Button hidden disabled floated='right'>Add Line</Button>} centered={false} ></Modal>*/
 const GrammarModal = () => (
     <Modal>
