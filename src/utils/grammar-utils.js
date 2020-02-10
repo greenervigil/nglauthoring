@@ -34,6 +34,34 @@ export const MultipleChoiceGrammar = (array) => {
         return multipleChoiceString
 }
 
+export const buildGrammar = (grammarArray, engine) => {
+    //grammarId
+    let grammarString = "public <" + createGrammarId(grammarArray) + "> = "
+    //public <.GRAMMARID> = <ANSWER> | <ANSWER> | <ANSWER>;
+    //public <.GRAMMARID> = <ANSWER> | <ANSWER>;
+    //public <.GRAMMARID> = <ANSWER>;
+    if (engine === 'Listening and Speaking') {
+        grammarString += ListeningSpeakingGrammar(grammarArray)
+    } else if (engine === 'Multiple Choice'){
+        grammarString += MultipleChoiceGrammar(grammarArray)
+    } else {
+        //do nothing
+    }       
+    return grammarString
+}
+
+export const csvOutput = (data) => {
+    //we need to add the grammar id to the output data so vendor can import csv into their system with the ids
+    let configuredData = []
+    data.forEach((row, index) => {
+        if (index !== 0) {
+            row[3] = createGrammarId(row)
+        }
+        configuredData.push(row)
+    })
+    return configuredData
+}
+
 export const downloadFile = (data, fileName) => {
     const blob = new Blob([data], {type: "text/plain"})
     const url = URL.createObjectURL(blob)

@@ -1,48 +1,21 @@
 import React from 'react'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import { createGrammarId, ListeningSpeakingGrammar, MultipleChoiceGrammar, downloadFile } from '../../utils/grammar-utils'
+import { createGrammarId, buildGrammar, csvOutput, downloadFile } from '../../utils/grammar-utils'
 import ExportCSV from '../export_csv'
 
 export default function GrammarCreate({data, engine, productName, productId, start}) {
     let count = start
-    function buildGrammar(grammarArray) {
-        //grammarId
-        let grammarString = "public <" + createGrammarId(grammarArray) + "> = "
-        //public <.GRAMMARID> = <ANSWER> | <ANSWER> | <ANSWER>;
-        //public <.GRAMMARID> = <ANSWER> | <ANSWER>;
-        //public <.GRAMMARID> = <ANSWER>;
-        if (engine === 'Listening and Speaking') {
-            grammarString += ListeningSpeakingGrammar(grammarArray)
-        } else if (engine === 'Multiple Choice'){
-            grammarString += MultipleChoiceGrammar(grammarArray)
-        } else {
-            //do nothing
-        }       
-        return grammarString
-    }
 
     function handleGrammarSubmit(event) {
         event.preventDefault();
         let fileData = ''
         data.filter((row, index) => index !== 0)
             .map((row) => (
-                fileData += buildGrammar(row)
+                fileData += buildGrammar(row, engine)
             )
         )
         downloadFile(fileData, "grammar.grm")
-    }
-
-    function csvOutput() {
-        //we need to add the grammar id to the output data so vendor can import csv into their system with the ids
-        let configuredData = []
-        data.forEach((row, index) => {
-            if (index !== 0) {
-                row[3] = createGrammarId(row)
-            }
-            configuredData.push(row)
-        })
-        return configuredData
     }
 
     function getActivityId() {
@@ -92,7 +65,7 @@ export default function GrammarCreate({data, engine, productName, productId, sta
         <form onSubmit={handleGrammarSubmit} >
             <Button color="marketing" type="submit">Compile Grammar File</Button>
             <Button color="marketing" onClick={createJsonObject} >Compile JSON</Button>
-            <ExportCSV data={csvOutput()} />
+            <ExportCSV data={csvOutput(data)} />
         </form>
     )
 }
