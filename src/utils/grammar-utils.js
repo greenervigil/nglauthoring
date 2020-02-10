@@ -3,34 +3,29 @@ export const createGrammarId = (array) => {
 }
 
 export const ListeningSpeakingGrammar = (array) => {
-    let listeningSpeakingString = ''
-        //answer 1
-        if(array[2] !== '' && array[3] !== '') {
-            listeningSpeakingString += array[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
-        } else {
-            listeningSpeakingString += array[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-        }
-        return listeningSpeakingString
+    //Listening and Speaking only has a single grammar questionText array[2]
+    return array[2].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
 }
 
 export const MultipleChoiceGrammar = (array) => {
     let multipleChoiceString = ''
         //answer 1
-        if(array[4] !== '' && array[5] !== '') {
+        if(array[4] !== '' && array[5] !== undefined) {
             multipleChoiceString += array[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
+            //answer 2
+            if(array[5] !== '' && array[6] !== undefined) {
+                multipleChoiceString += array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
+                //answer 3
+                if(array[6] !== '') {
+                    multipleChoiceString += array[6].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+                } 
+            }  else {
+                multipleChoiceString += array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
+            }
         } else {
             multipleChoiceString += array[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
         }
-        //answer 2
-        if(array[5] !== '' && array[6] !== '') {
-            multipleChoiceString += array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| " 
-        }  else {
-            multipleChoiceString += array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-        }
-        //answer 3
-        if(array[6] !== '') {
-            multipleChoiceString += array[6].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ").trim() + "; "
-        } 
+        
         return multipleChoiceString
 }
 
