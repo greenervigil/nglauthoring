@@ -63,8 +63,8 @@ export default function GrammarCreate({data, engine, productName, productId, sta
 
     return (
         <form onSubmit={handleGrammarSubmit} >
-            <Button color="marketing" type="submit">Compile Grammar File</Button>
-            <Button color="marketing" onClick={createJsonObject} >Compile JSON</Button>
+            <Button data-testid="compile_grammar" color="marketing" type="submit">Compile Grammar File</Button>
+            <Button data-testid="compile_json" color="marketing" onClick={createJsonObject} >Compile JSON</Button>
             <ExportCSV data={csvOutput(data)} />
         </form>
     )

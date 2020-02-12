@@ -10,10 +10,10 @@ export const ListeningSpeakingGrammar = (array) => {
 export const MultipleChoiceGrammar = (array) => {
     let multipleChoiceString = ''
         //answer 1
-        if(array[4] !== '' && array[5] !== undefined) {
+        if(array[4] !== '' && array[5] !== undefined && array[5] !== '') {
             multipleChoiceString += array[4].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
             //answer 2
-            if(array[5] !== '' && array[6] !== undefined) {
+            if(array[5] !== '' && array[6] !== undefined && array[6] !== '') {
                 multipleChoiceString += array[5].toLowerCase().replace(/[!?:,]/g, "").replace(/\./g, " ") + "| "
                 //answer 3
                 if(array[6] !== '') {
