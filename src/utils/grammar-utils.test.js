@@ -4,41 +4,44 @@ const testMCData = [['fileName','index','questionText','grammarID','answers'],['
     
 const testLSData = [['fileName','index','questionText','grammarID',],['WE3eL2_01_02_03.xml', '0','I usually like a tomato with breakfast','']]
 
-test('test grammar id creation', () => {
-    const returnData = createGrammarId(testMCData[1])
-
-    expect(returnData).toEqual('.WE3eL2_01_02_030')
-})
-
-test('test listening and speaking grammar creation', () => {
-    const returnData = ListeningSpeakingGrammar(testLSData[1])
-
-    expect(returnData).toEqual('i usually like a tomato with breakfast; ')
-})
-
-test('test the Multiple Choice grammar creation', () => {
-    const returnData = MultipleChoiceGrammar(testMCData[1])
-
-    expect(returnData).toEqual('i usually like a tomato with breakfast| i like cereal; ')
-})
-
-test('test CSV output for MC to include a grammarID', () => {
+describe('Testing Grammar-utils', () => {
+    it('Should create a grammar id', () => {
+        const returnData = createGrammarId(testMCData[1])
     
-    const returnGrammarData = csvOutput(testMCData, 'Multiple Choice')
-
-    expect(returnGrammarData[1][3]).toEqual(".WE3eL2_01_02_030")
+        expect(returnData).toEqual('.WE3eL2_01_02_030')
+    })
+    
+    it('Should output listening and speaking grammar', () => {
+        const returnData = ListeningSpeakingGrammar(testLSData[1])
+    
+        expect(returnData).toEqual('i usually like a tomato with breakfast; ')
+    })
+    
+    it('Should output Multiple Choice grammar', () => {
+        const returnData = MultipleChoiceGrammar(testMCData[1])
+    
+        expect(returnData).toEqual('i usually like a tomato with breakfast| i like cereal; ')
+    })
+    
+    it('Should output CSV data for MC to include a grammarID', () => {
+        
+        const returnGrammarData = csvOutput(testMCData, 'Multiple Choice')
+    
+        expect(returnGrammarData[1][3]).toEqual(".WE3eL2_01_02_030")
+    })
+    
+    it('Should output CSV data for LS to include a grammarID', () => {
+        const returnLSGrammarData = csvOutput(testLSData, 'Listening and Speaking')
+    
+        expect(returnLSGrammarData[1][3]).toEqual(".WE3eL2_01_02_030")
+    })
+    
+    it('Should build MC grammar', () => {
+        expect(buildGrammar(testMCData[1], 'Multiple Choice')).toEqual('public <.WE3eL2_01_02_030> = i usually like a tomato with breakfast| i like cereal; ')
+    })
+    
+    it('Should build LS grammar', () => {
+        expect(buildGrammar(testLSData[1], 'Listening and Speaking')).toEqual('public <.WE3eL2_01_02_030> = i usually like a tomato with breakfast; ')
+    })
 })
 
-test('test CSV output for LS to include a grammarID', () => {
-    const returnLSGrammarData = csvOutput(testLSData, 'Listening and Speaking')
-
-    expect(returnLSGrammarData[1][3]).toEqual(".WE3eL2_01_02_030")
-})
-
-test('building MC grammar', () => {
-    expect(buildGrammar(testMCData[1], 'Multiple Choice')).toEqual('public <.WE3eL2_01_02_030> = i usually like a tomato with breakfast| i like cereal; ')
-})
-
-test('building LS grammar', () => {
-    expect(buildGrammar(testLSData[1], 'Listening and Speaking')).toEqual('public <.WE3eL2_01_02_030> = i usually like a tomato with breakfast; ')
-})
