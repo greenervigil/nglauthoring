@@ -15,15 +15,16 @@ html, body {
   margin: 100px;
   overflow: auto;
   padding-bottom: 100px;
+  width: 100%;
 }
 
 .App-header {
   background-color: #000;
-  height: 175px;
+  height: 100px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -38,10 +39,10 @@ html, body {
 .App-footer {
   background-color: #000;
   text-align: center;
-  padding-top: 25px;
+  padding-top: 100px;
   color: white;
   position: relative;
-  height: 155px;
+  height: 250px;
   left: 0;
   right: 0;
   bottom: 0;

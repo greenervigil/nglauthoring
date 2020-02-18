@@ -208,7 +208,7 @@ export default function IntegratedResources({ name }) {
       </form>
     </div>
     <div className="alert-success" id="alert" role="alert" hidden>
-      <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}><strong>Well done!</strong> JSON creation completed.</Alert>
+      <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}>JSON creation complete.</Alert>
     </div>
     <CommitBox data={json} bookAbbr={bookAbbr}/>
     <Footer />
