@@ -12,7 +12,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "publish": "node ./scripts/artifact",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "cengage/react"
@@ -35,6 +37,11 @@
     "semantic-ui-react": "^0.87.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-links": "^5.3.14",
+    "@storybook/addons": "^5.3.14",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^5.3.14",
     "@testing-library/cypress": "^5.1.2",
     "@testing-library/dom": "^6.12.0",
     "@testing-library/jest-dom": "^5.0.2",
