@@ -149,7 +149,7 @@ export default function IntegratedResources({ name }) {
             {
               name:  row[4],
               location: path + row[0] + '/' + row[5],
-              teacherOnly: (row[7] === 'TRUE'),
+              teacheronly: (row[7] === 'TRUE'),
               downloadable: (row[8] === 'TRUE'),
               type: row[0].toLowerCase()
             }
