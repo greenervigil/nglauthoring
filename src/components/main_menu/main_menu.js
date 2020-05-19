@@ -8,9 +8,9 @@ export default function MainMenu() {
             <h1 style={{textAlign: "center"}}>Authoring Tools</h1>
             <div id="main" className="container">
                 <Grid stackable columns={2} style={{textAlign: "center"}}>
-                    <Grid.Column>
+                    {/*<Grid.Column>
                         <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
-                    </Grid.Column>
+                    </Grid.Column>*/}
                     <Grid.Column>
                         <MenuCard name="Objectives" description="Create XML tags for objectives."/>
                     </Grid.Column>

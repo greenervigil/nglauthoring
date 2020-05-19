@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import {Card} from 'semantic-ui-react'
 import { Button } from 'react-magma-dom'
 import IntegratedResources from '../integrated_resources/integrated_resources'
-import BookConfig from '../book_config/book_config'
+//import BookConfig from '../book_config/book_config'
 import SRICongif from '../sri_config'
 import Grammar from '../grammar/grammar'
 import Objectives from '../objectives/objectives'
@@ -15,7 +15,7 @@ export default function MenuCard({ name, description }) {
         if(name === 'Integrated Resources'){
             ReactDOM.render(<IntegratedResources name="Integrated Resources"/>, document.getElementById('root'))
         } else if(name === 'Book Configuration'){
-            ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'))
+            //ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'))
         }else if (name === 'Objectives'){
             ReactDOM.render(<Objectives name="Objectives"/>, document.getElementById('root'))
         } else if (name === "SRI") {
