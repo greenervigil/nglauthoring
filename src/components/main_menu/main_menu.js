@@ -1,27 +1,32 @@
 import React from 'react'
 import MenuCard from './menu_card'
-import { Grid } from 'semantic-ui-react'
+import Header from '../header'
+import Footer from '../footer'
 
 export default function MainMenu() {
+    const menuItems = [
+        {
+            name: 'Objectives',
+            description: 'Create XML tags for objectives.'
+        },
+        {
+            name: 'SRI Grammar',
+            description: 'Create grammar and CSV files.'
+        },
+        {
+            name: 'Integrated Resources',
+            description: 'Create Integrated Resources JSON.'
+        }
+    ]
+
     return (
         <>
-            <h1 style={{textAlign: "center"}}>Authoring Tools</h1>
-            <div id="main" className="container">
-                <Grid stackable columns={2} style={{textAlign: "center"}}>
-                    {/*<Grid.Column>
-                        <MenuCard name="Book Configuration" description="Configure info.xml for a book."/>
-                    </Grid.Column>*/}
-                    <Grid.Column>
-                        <MenuCard name="Objectives" description="Create XML tags for objectives."/>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <MenuCard name="SRI Grammar" description="Create grammar and CSV files."/>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <MenuCard name="Integrated Resources" description="Create Integrated Resources JSON."/>
-                    </Grid.Column>
-                </Grid>
+            <Header />
+            <h1 style={{textAlign: 'center'}}>Authoring Tools</h1>
+            <div id="main" >
+                {menuItems.map((item, key) => <MenuCard key={key} name={item.name} description={item.description} />)}
             </div>
+            <Footer />
         </>
     )
 }

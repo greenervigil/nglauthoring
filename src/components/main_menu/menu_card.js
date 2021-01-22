@@ -27,7 +27,7 @@ export default function MenuCard({ name, description }) {
         }
     }
     return (
-        <Card>
+        <Card style={{ margin: '5px'}}>
             <Card.Content>
                 <Card.Header>{name}</Card.Header>
                 <Card.Meta>{description}</Card.Meta>
