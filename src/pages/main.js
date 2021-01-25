@@ -1,9 +1,10 @@
 import React from 'react'
-import MenuCard from './menu_card'
-import Header from '../header'
-import Footer from '../footer'
+import MenuCard from '../components/main/menu_card'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import Navigation from '../components/Navigation'
 
-export default function MainMenu() {
+export default function Main() {
     const menuItems = [
         {
             name: 'Objectives',
@@ -22,6 +23,7 @@ export default function MainMenu() {
     return (
         <>
             <Header />
+            <Navigation />
             <h1 style={{textAlign: 'center'}}>Authoring Tools</h1>
             <div id="main" >
                 {menuItems.map((item, key) => <MenuCard key={key} name={item.name} description={item.description} />)}

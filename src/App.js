@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './App.css';
-import MainMenu from './components/main_menu/main_menu';
+import Main from './pages/main';
 
 
 export default function App() {
-  return <MainMenu />
+  return <Main />
 }

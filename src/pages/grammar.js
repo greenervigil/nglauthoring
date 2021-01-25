@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../header'
-import Footer from '../footer'
+import Header from '../components/header'
+import Footer from '../components/footer'
 import { Alert } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import ReturnHome from '../main_menu/return_home'
-import GrammarForm from './grammar_form'
+import ReturnHome from '../components/main/return_home'
+import GrammarForm from '../components/grammar/grammar_form'
 
 export default function Grammar({ name }) {
     return (

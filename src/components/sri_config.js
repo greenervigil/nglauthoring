@@ -2,8 +2,8 @@ import React from 'react'
 import Header from './header'
 import Footer from './footer'
 import { Grid } from 'semantic-ui-react'
-import MenuCard from './main_menu/menu_card'
-import ReturnHome from './main_menu/return_home'
+import MenuCard from './main/menu_card'
+import ReturnHome from './main/return_home'
 
 export default function SRIConfig() {
     return (
