@@ -1,5 +1,6 @@
 import React from 'react'
-import {Button, Download2Icon } from 'react-magma-dom'
+import {Button } from 'react-magma-dom'
+import { Download2Icon } from 'react-magma-icons'
 import PropTypes from 'prop-types'
 
 export default function CommitBox({ data, bookAbbr }) {

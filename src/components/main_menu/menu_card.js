@@ -33,7 +33,7 @@ export default function MenuCard({ name, description }) {
                 <Card.Meta>{description}</Card.Meta>
             </Card.Content>
             <Card.Content extra>
-                <Button block color="marketing" name={name} onClick={handleClick}>Select</Button>
+                <Button isFullWidth color="marketing" name={name} onClick={handleClick}>Select</Button>
             </Card.Content>
         </Card>
     )

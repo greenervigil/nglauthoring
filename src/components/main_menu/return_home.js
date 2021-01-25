@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, AngleLeftIcon } from 'react-magma-dom'
+import { Button } from 'react-magma-dom'
+import { AngleLeftIcon } from 'react-magma-icons'
 
 export default function ReturnHome() {
     return (
