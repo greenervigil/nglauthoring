@@ -1,13 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from '../components/header'
-import Footer from '../components/footer'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from '../components/objectives/objective_map'
-import PropTypes from 'prop-types'
-import ReturnHome from '../components/main/return_home'
 
-export default function Objectives({ name }) {
+export default function Objectives() {
 
     function readObjectiveFile(data) {
         const tableElement = document.getElementById('objectiveText')
@@ -20,10 +16,8 @@ export default function Objectives({ name }) {
     }
     return (
         <>
-        <Header />
-        <ReturnHome />
         <div className="container">
-            <h2>{name}</h2>
+            <h2>Objectives</h2>
             <div className="container">
                 <form>
                     <div className="form-group">
@@ -33,11 +27,6 @@ export default function Objectives({ name }) {
             </div>
         </div>
         <div className="container" id="objectiveText"></div> 
-        <Footer />
         </>
     )
-}
-
-Objectives.propTypes = {
-    name: PropTypes.string.isRequired
 }
