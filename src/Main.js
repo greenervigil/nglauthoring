@@ -20,7 +20,7 @@ export default function Main() {
                     <li><NavLink to='/integrated-resources'>Integrated Resources</NavLink></li>
 
                 </ul>
-                <div className='content'>
+                <div className='content' id='content'>
                     <Route exact path='/' component={Home} />
                     <Route path='/objectives' component={Objectives} />
                     <Route path='/grammar' component={Grammar} />
