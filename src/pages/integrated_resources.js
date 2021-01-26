@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
-import Header from '../components/header'
 import CommitBox from '../components/commit/commitbox'
-import Footer from '../components/footer'
 import CSVReader from 'react-csv-reader'
-import { Alert} from 'react-magma-dom'
-import PropTypes from 'prop-types'
-import ReturnHome from '../components/main/return_home'
+import { Alert, Input} from 'react-magma-dom'
 
 let json = {
   audio: {},
@@ -13,7 +9,7 @@ let json = {
   document: {}
 }
 
-export default function IntegratedResources({ name }) {
+export default function IntegratedResources() {
 
   const [bookAbbr, setBookAbbr] = useState('')
 
@@ -195,27 +191,24 @@ export default function IntegratedResources({ name }) {
   
   return (
     <>
-    <Header />
-    <ReturnHome />
-    <div className="container">
-    <h2>{name}</h2>
-      <form>
-        <div className="form-group">
-        <label htmlFor="bookAbbr">Book Abbreviation</label>
-          <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" onChange={handleChange}/>
-        </div>
-        <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
-      </form>
-    </div>
-    <div className="alert-success" id="alert" role="alert" hidden>
-      <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}>JSON creation complete.</Alert>
-    </div>
-    <CommitBox data={json} bookAbbr={bookAbbr}/>
-    <Footer />
+      <div className="container">
+      <h2>Integrated Resources</h2>
+        <form className="form-group">
+          <Input
+            id='bookAbbr'
+            labelText='Book Abbreviation'
+            placeholder='Book Abbreviation'
+            helperMessage='Enter the book Abbreviation for an OWB book or base book for Super Product'
+            inputSize='small'
+            onChange={handleChange}
+          />
+          <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
+        </form>
+      </div>
+      <div className="alert-success" id="alert" role="alert" hidden>
+        <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}>JSON creation complete.</Alert>
+      </div>
+      <CommitBox data={json} bookAbbr={bookAbbr}/>
     </>
   )
-}
-
-IntegratedResources.propTypes = {
-  name: PropTypes.string.isRequired
 }
