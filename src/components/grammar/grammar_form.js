@@ -49,22 +49,43 @@ export default function GrammarForm() {
     }
 
     return (
-        <form>
-            <div className="form-group">
-                <Select 
-                    id="engine" 
-                    name="Select Engine Type" 
-                    labelText="Select engine type" 
-                    options={options} 
-                    onChange={(handleChange)}/>
-                <Input name="product name" type="text" labelText="Product name" helperMessage="Enter the Product Name like 'My World Link Online 3e'" onChange={handleInputChange}/>
-                <Input name="product ID" type="text" labelText="Product ID" helperMessage="The Product ID is sometimes the Discipline like 'MWLO3e'" onChange={handleInputChange}/>
-                <p>Choose a starting activity number:</p>
-                <div style={{display: 'flex', justifyContent: 'flex-start'}}>
-                    <Input name="start" labelText="Start" labelVisuallyHidden type="number" inputStyle={{width: 200, marginRight: 25}} placeholder="1" onChange={handleInputChange}/> 
-                </div>
-                <CSVReader cssInputClass="" label="Select CSV with Grammar Resources" onFileLoaded={readFile} />
+        <form className='form-group'>
+            <Select 
+                id="engine" 
+                name="Select Engine Type" 
+                labelText="Select engine type" 
+                items={options} 
+                onChange={(handleChange)}/>
+            <Input 
+                name="product name" 
+                type="text" 
+                labelText="Product name" 
+                helperMessage="Enter the Product Name like 'My World Link Online 3e'" 
+                onChange={handleInputChange}
+            />
+            <p>Choose a starting activity number:</p>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Input 
+                    name="start" 
+                    labelText="Start" 
+                    labelVisuallyHidden 
+                    type="number" 
+                    inputStyle={{width: 200, marginRight: 25}} 
+                    placeholder="1" 
+                    onChange={handleInputChange}
+                /> 
+                <Input 
+                    name="product ID" 
+                    type="text" 
+                    labelText="Product ID" 
+                    helperMessage="The Product ID is sometimes the Discipline like 'MWLO3e'" 
+                    onChange={handleInputChange}
+                />
             </div>
+            <CSVReader 
+                cssInputClass="" 
+                label="Select CSV with Grammar Resources" 
+                onFileLoaded={readFile} />
         </form>
     )
 }
