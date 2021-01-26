@@ -13,11 +13,11 @@ export default function MenuCard({ name, description }) {
     function handleClick(event) {
         const name = event.target.name
         if(name === 'Integrated Resources'){
-            ReactDOM.render(<IntegratedResources name="Integrated Resources"/>, document.getElementById('root'))
+            ReactDOM.render(<IntegratedResources />, document.getElementById('root'))
         } else if(name === 'Book Configuration'){
             //ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'))
         }else if (name === 'Objectives'){
-            ReactDOM.render(<Objectives name="Objectives"/>, document.getElementById('root'))
+            ReactDOM.render(<Objectives />, document.getElementById('root'))
         } else if (name === "SRI") {
             ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('root'))
         } else if (name === "SRI Grammar") {
