@@ -10,6 +10,8 @@
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -88,15 +90,16 @@ ul.navigation li a.active {
 }
 
 .content {
-  margin: 50px 0 20px 0;;
+  margin: 50px 0 20px 0;
+  flex: 1 0 auto;
+  min-height: calc(100vh - 300px);
 }
 
 footer {
   background-color: #000;
-  bottom: 0;
+  flex-shrink: 0;
   color: white;
   padding: 20px 0 10px 0;
-  position: absolute;
   text-align: center;
   width: 100%;
   margin-top: 50px;

@@ -1,29 +1,26 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {Card, CardBody, CardHeading} from 'react-magma-dom'
 import { Button } from 'react-magma-dom'
-import IntegratedResources from '../../pages/integrated_resources'
-//import BookConfig from '../book_config/book_config'
-import SRICongif from '../sri_config'
-import Grammar from '../../pages/grammar'
-import Objectives from '../../pages/objectives'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 
 export default function MenuCard({ name, description }) {
+    let history = useHistory();
+
     function handleClick(event) {
         const name = event.target.name
         if(name === 'Integrated Resources'){
-            ReactDOM.render(<IntegratedResources />, document.getElementById('content'))
+            history.push('/integrated-resources')
         } else if(name === 'Book Configuration'){
-            //ReactDOM.render(<BookConfig name="Book Configuration"/>, document.getElementById('root'))
+            //history.push('/book-config')
         }else if (name === 'Objectives'){
-            ReactDOM.render(<Objectives />, document.getElementById('content'))
+            history.push('/objectives')
         } else if (name === "SRI") {
-            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('content'))
+            history.push('/grammar')
         } else if (name === "SRI Grammar") {
-            ReactDOM.render(<Grammar name="SRI Grammars"/>, document.getElementById('content'))
+            history.push('/grammar')
         } else if (name === "SRI Server Stats") {
-            ReactDOM.render(<SRICongif name="SRI Grammars"/>, document.getElementById('content'))
+            history.push('/grammar')
         }
     }
     return (
@@ -36,7 +33,7 @@ export default function MenuCard({ name, description }) {
             <CardBody>
                 <CardHeading headingLevel={3}>{name}</CardHeading>
                 {description}
-                {/*<Button isFullWidth color="marketing" name={name} onClick={handleClick}>Select</Button>*/}
+                <Button isFullWidth color="marketing" name={name} onClick={handleClick}>Select</Button>
             </CardBody>
         </Card>
     )
