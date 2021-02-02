@@ -1,18 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState } from 'react'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from '../components/objectives/objective_map'
 
 export default function Objectives() {
-
+    const [objectiveData, setObjectiveData] = useState([])
     function readObjectiveFile(data) {
-        const tableElement = document.getElementById('objectiveText')
-        ReactDOM.render(
-            <>
-                <ObjectiveMap data={data} />
-                <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
-            </>, 
-        tableElement)
+        setObjectiveData(data)
     }
     return (
         <>
@@ -26,7 +19,10 @@ export default function Objectives() {
                 </form>
             </div>
         </div>
-        <div className="container" id="objectiveText"></div> 
+        <div className="container" id="objectiveText">
+            <ObjectiveMap data={objectiveData} />
+            <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
+        </div> 
         </>
     )
 }
