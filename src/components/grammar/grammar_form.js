@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react'
 import { Select, Input } from 'react-magma-dom'
-import GrammarTable from './grammar_table'
 import CSVReader from 'react-csv-reader'
-import GrammarCreate from './grammar_create'
+import PropTypes from 'prop-types'
 
 const options = [
     {
@@ -16,37 +14,7 @@ const options = [
     }
 ]
 
-export default function GrammarForm() {
-
-    const [engine, setEngine] = useState('')
-    const [productName, setProductName] = useState('')
-    const [productId, setProductId] = useState('')
-    const [start, setStart] = useState(1)
-
-    function handleChange(option) {
-        setEngine(option.value)
-    }
-
-    function handleInputChange(event) {
-        const name = event.target.name
-        if(name === 'product name') {
-            setProductName(event.target.value)
-        } else if (name === 'product ID') {
-            setProductId(event.target.value)
-        } else if (name === 'start') {
-            setStart(Number(event.target.value))
-        }
-    }
-
-    function readFile(data) {
-        const tableElement = document.getElementById('grammarTable')
-        ReactDOM.render(
-            <div className="container">
-                <GrammarTable data={data} engine={engine}/>
-                <GrammarCreate data={data} engine={engine} productName={productName} productId={productId} start={start}/>
-            </div>, 
-        tableElement)
-    }
+export default function GrammarForm({ handleChange, handleInputChange, fileReadFunction }) {
 
     return (
         <form className='form-group'>
@@ -85,7 +53,13 @@ export default function GrammarForm() {
             <CSVReader 
                 cssInputClass="" 
                 label="Select CSV with Grammar Resources" 
-                onFileLoaded={readFile} />
+                onFileLoaded={fileReadFunction} />
         </form>
     )
+}
+
+GrammarForm.propTypes = {
+    handleInputChange: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    fileReadFunction: PropTypes.func.isRequired,
 }

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Table, Icon } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
-function checkGrammar(phrase) {
-    if(!/\d/.test(phrase) && !/<[a-s][\s\S]*>/i.test(phrase) && !/[;&#]/i.test(phrase)) {
-        document.getElementById('alert_error').removeAttribute('hidden')
-        return false
-    } else {
-        return true
+export default function GrammarRow({ engine, row }) {
+    function checkGrammar(phrase) {
+        if(!/\d/.test(phrase) && !/<[a-s][\s\S]*>/i.test(phrase) && !/[;&#]/i.test(phrase)) {
+            return false
+        } else {
+            return true
+        }
     }
-}
 
-export default function GrammarRow({ engine, row}) {
     if(engine === 'Listening and Speaking'){
         return (
             <Table.Row>
@@ -50,4 +50,9 @@ export default function GrammarRow({ engine, row}) {
             </Table.Row>
         )
     }
+}
+
+GrammarRow.propTypes = {
+    engine: PropTypes.string.isRequired,
+    row: PropTypes.array.isRequired
 }

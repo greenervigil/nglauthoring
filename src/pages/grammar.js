@@ -1,25 +1,47 @@
-import React from 'react'
-import { Alert } from 'react-magma-dom'
+import React, { useState } from 'react'
 import GrammarForm from '../components/grammar/grammar_form'
+import GrammarCreate from '../components/grammar/grammar_create'
+import GrammarTable from '../components/grammar/grammar_table'
 
 export default function Grammar() {
+    const [engine, setEngine] = useState('')
+    const [productName, setProductName] = useState('')
+    const [productId, setProductId] = useState('')
+    const [start, setStart] = useState(1)
+    const [grammarData, setGrammarData] = useState([])
+
+    function handleInputChange(event) {
+        const name = event.target.name
+        if(name === 'product name') {
+            setProductName(event.target.value)
+        } else if (name === 'product ID') {
+            setProductId(event.target.value)
+        } else if (name === 'start') {
+            setStart(Number(event.target.value))
+        }
+    }
+
+    function handleChange(option) {
+        setEngine(option.value)
+    }
+
+    function readFile(data) {
+        setGrammarData(data)
+        document.getElementById('grammarTable').removeAttribute('hidden')
+    }
+
     return (
-        <>
-        <div className="container">
+        <div className='container'>
             <h2>SRI Grammar</h2>
             <p>Upload CSV grammar file to evaluate grammar correctness, create SRI grammar files, and test bench configuration files.  <strong>All numbers need to be spelled out in the answer text to guarantee correct grammar is used.</strong></p>
-            <div id="alert_error" role="alert" hidden>
-                <Alert dismissable="true" closeLabel="Close" variant="danger" onDismiss={() => document.getElementById('alert_error').setAttribute('hidden', true)}>Compile completed with errors.  Review the table and correct any errors.</Alert>
+                
+            <div className='container'>
+                <GrammarForm handleChange={handleChange} handleInputChange={handleInputChange} fileReadFunction={readFile}/>
             </div>
-            <div id="alert_success" role="alert" hidden>
-                <Alert dismissable="true" closeLabel="Close" variant="success" onDismiss={() => {document.getElementById('alert_success').setAttribute('hidden', true)}}>Success!</Alert>
+            <div id='grammarTable' hidden>
+                <GrammarTable data={grammarData} engine={engine} />
+                <GrammarCreate data={grammarData} engine={engine} productName={productName} productId={productId} start={start}/>
             </div>
-            <div className="container">
-                <GrammarForm />
-            </div>
-            <div id="grammarTable"></div>
         </div>
-        &nbsp;
-        </>
     )
 }

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 export default function GrammarTable({ data, engine }) {
     return (
         <>
+            <p>Review the table and make any corrections to errors.</p>
             <Table celled fixed definition>
                 <Table.Header fullWidth>   
                 {data.filter((row, index) => index===0)
@@ -24,13 +25,12 @@ export default function GrammarTable({ data, engine }) {
                     }
                 </Table.Body>
             </Table>
-            {/*<GrammarModal />*/}
         </>
     )
 }
 
 GrammarTable.propTypes = {
     data: PropTypes.array.isRequired,
-    engine: PropTypes.string.isRequired
+    engine: PropTypes.string.isRequired,
 }
 
