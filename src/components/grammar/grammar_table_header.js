@@ -1,16 +1,16 @@
 import React from 'react'
-import { Table } from 'semantic-ui-react'
+import { TableRow, TableHeaderCell } from 'react-magma-dom'
 import PropTypes from 'prop-types'
 
 export default function GrammarTableHeader({ headerRow }) {
     return (
-        <Table.Row>
+        <TableRow>
             {headerRow
             .map((item, index) => (
-                <Table.HeaderCell key={index}>{item}</Table.HeaderCell>
+                <TableHeaderCell key={index}>{item}</TableHeaderCell>
             )
             )}
-        </Table.Row>
+        </TableRow>
     )
 }
 

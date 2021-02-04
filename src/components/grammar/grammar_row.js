@@ -1,5 +1,6 @@
 import React from 'react'
-import { Table, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
+import { TableRow, TableCell } from 'react-magma-dom'
 import PropTypes from 'prop-types'
 
 export default function GrammarRow({ engine, row }) {
@@ -13,41 +14,41 @@ export default function GrammarRow({ engine, row }) {
 
     if(engine === 'Listening and Speaking'){
         return (
-            <Table.Row>
-                <Table.Cell >{row[0]}</Table.Cell>
-                <Table.Cell>{row[1]}</Table.Cell>
+            <TableRow>
+                <TableCell >{row[0]}</TableCell>
+                <TableCell>{row[1]}</TableCell>
                 {checkGrammar(row[2]) ? (
-                    <Table.Cell negative><Icon name='attention' />{row[2]}</Table.Cell>
+                    <TableCell negative><Icon name='attention' />{row[2]}</TableCell>
                     ) : (
-                    <Table.Cell positive>{row[2]}</Table.Cell>
+                    <TableCell positive>{row[2]}</TableCell>
                     )
                 }
-                <Table.Cell>{'.' + row[0].substring(0, row[0].length -4) + row[1]}</Table.Cell>
-            </Table.Row>
+                <TableCell>{'.' + row[0].substring(0, row[0].length -4) + row[1]}</TableCell>
+            </TableRow>
         )
     } else {
         return (
-            <Table.Row>
-                <Table.Cell >{row[0]}</Table.Cell>
-                <Table.Cell singleLine collapsing>{row[1]}</Table.Cell>
-                <Table.Cell singleLine>{row[2]}</Table.Cell>
-                <Table.Cell>{'.' + row[0].substring(0, row[0].length -4) + row[1]}</Table.Cell>
+            <TableRow>
+                <TableCell >{row[0]}</TableCell>
+                <TableCell singleLine collapsing>{row[1]}</TableCell>
+                <TableCell singleLine>{row[2]}</TableCell>
+                <TableCell>{'.' + row[0].substring(0, row[0].length -4) + row[1]}</TableCell>
                 {checkGrammar(row[4]) ? (
-                    <Table.Cell negative><Icon name='attention' />{row[4]}</Table.Cell>
+                    <TableCell negative><Icon name='attention' />{row[4]}</TableCell>
                 ) :(
-                    <Table.Cell positive>{row[4]}</Table.Cell>
+                    <TableCell positive>{row[4]}</TableCell>
                 )}
                 {checkGrammar(row[5]) ? (
-                    <Table.Cell negative><Icon name='attention' />{row[5]}</Table.Cell>
+                    <TableCell negative><Icon name='attention' />{row[5]}</TableCell>
                 ) : (
-                    <Table.Cell positive>{row[5]}</Table.Cell>
+                    <TableCell positive>{row[5]}</TableCell>
                 )}
                 {checkGrammar(row[6]) ? (
-                    <Table.Cell negative>{row[6]}</Table.Cell>
+                    <TableCell negative>{row[6]}</TableCell>
                 ) : (
-                    <Table.Cell positive>{row[6]}</Table.Cell>
+                    <TableCell positive>{row[6]}</TableCell>
                 )}
-            </Table.Row>
+            </TableRow>
         )
     }
 }
