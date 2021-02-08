@@ -18,6 +18,6 @@ LSGrammarTable.args = {
 export const MCGrammarTable = Template.bind({})
 
 MCGrammarTable.args = {
-    engine: 'Listening and Speaking',
-    data: [['activity', 'unit', 'Question','grammarId','answer', 'answer','answer'],['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party'], ['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party'], ['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party']]
+    engine: 'Multiple Choice',
+    data: [['activity', 'unit', 'Question','grammarId','answer','answer','answer'],['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party'], ['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party'], ['MWLO3e_02_08.xml', '20', 'How many people came to the party', '', '100 people came to the party', 'I was all alone', 'What party']]
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
 import { TableRow, TableCell } from 'react-magma-dom'
 import PropTypes from 'prop-types'
+import { WarningIcon } from 'react-magma-icons'
 
 export default function GrammarRow({ engine, row }) {
     function checkGrammar(phrase) {
@@ -18,7 +18,7 @@ export default function GrammarRow({ engine, row }) {
                 <TableCell >{row[0]}</TableCell>
                 <TableCell>{row[1]}</TableCell>
                 {checkGrammar(row[2]) ? (
-                    <TableCell negative><Icon name='attention' />{row[2]}</TableCell>
+                    <TableCell negative><WarningIcon color='red' size={15} />{row[2]}</TableCell>
                     ) : (
                     <TableCell positive>{row[2]}</TableCell>
                     )
@@ -34,12 +34,12 @@ export default function GrammarRow({ engine, row }) {
                 <TableCell singleLine>{row[2]}</TableCell>
                 <TableCell>{'.' + row[0].substring(0, row[0].length -4) + row[1]}</TableCell>
                 {checkGrammar(row[4]) ? (
-                    <TableCell negative><Icon name='attention' />{row[4]}</TableCell>
+                    <TableCell negative><WarningIcon color='red' size={15} />{row[4]}</TableCell>
                 ) :(
                     <TableCell positive>{row[4]}</TableCell>
                 )}
                 {checkGrammar(row[5]) ? (
-                    <TableCell negative><Icon name='attention' />{row[5]}</TableCell>
+                    <TableCell negative><WarningIcon color='red' size={15} />{row[5]}</TableCell>
                 ) : (
                     <TableCell positive>{row[5]}</TableCell>
                 )}
