@@ -1,7 +1,11 @@
 import React from 'react'
-import { Table, TableHead, TableBody } from 'react-magma-dom'
+import { 
+    Table, 
+    TableHead, 
+    TableHeaderCell, 
+    TableBody, 
+    TableRow } from 'react-magma-dom'
 import GrammarRow from './grammar_row'
-import GrammarTableHeader from './grammar_table_header'
 import PropTypes from 'prop-types'
 
 export default function GrammarTable({ data, engine }) {
@@ -12,7 +16,10 @@ export default function GrammarTable({ data, engine }) {
                 <TableHead>   
                 {data.filter((row, index) => index===0)
                     .map((row, index) => (
-                        <GrammarTableHeader headerRow={row} key={index} />
+                        <TableRow key={index}>
+                            {row.map((item, index) => (<TableHeaderCell key={index}>{item}</TableHeaderCell>)
+                            )}
+                        </TableRow>
                     )
                 )}
                 </TableHead>

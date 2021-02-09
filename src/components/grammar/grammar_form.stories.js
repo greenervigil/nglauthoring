@@ -4,14 +4,15 @@ import GrammarForm from './grammar_form'
 export default {
     title: 'Forms - Grammar Form',
     component: GrammarForm,
+    parameters: { actions: { argTypesRegex: '^on.*' } },
 }
 
 const Template = (args) => <GrammarForm { ...args} />
 
 export const Default = Template.bind({})
 
-Default.args = {
+/*Default.parameters = {
     handleInputChange: () => {},
     handleChange: () => {},
     fileReadFunction: () => {}
-}
+}*/
