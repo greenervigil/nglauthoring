@@ -10,7 +10,7 @@ export default function ObjectiveMap({ data }) {
                 {data.filter((row, index) => index !== 0)
                     .map((row, index) => {
                         return (
-                            <Objective key={index} row={row} />   
+                            <Objective key={index} objectiveId={row[0]} objectiveName={row[1]}/>   
                         )
                     })}
             <code>&lt;/objectives&gt;</code>
