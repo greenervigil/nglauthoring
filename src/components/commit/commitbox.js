@@ -17,7 +17,7 @@ export default function CommitBox({ data, bookAbbr }) {
     <div className="container">
       <form onSubmit={handleClick}>
         <div className="form-group">
-          <Button type="submit" color="marketing" icon={<Download2Icon />}>
+          <Button testId='save_button' type="submit" color="marketing" icon={<Download2Icon />}>
             Save to file
           </Button>
         </div>
