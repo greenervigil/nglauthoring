@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Main from './Main';
+import { cleanup, render } from '@testing-library/react';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Main />, div);
-  ReactDOM.unmountComponentAtNode(div);
+afterEach(cleanup)
+
+test('<App/>', () => {
+  const app = render(<Main />);
+  
+  expect(app).toBeDefined();
 });
