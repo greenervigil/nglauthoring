@@ -1,29 +1,10 @@
-import React, { useState } from 'react'
-import Header from '../header'
-import CommitBox from '../commit/commitbox'
-import Footer from '../footer'
-import CSVReader from 'react-csv-reader'
-import { Alert} from 'react-magma-dom'
-import PropTypes from 'prop-types'
-import ReturnHome from '../main_menu/return_home'
-
 let json = {
-  audio: {},
-  video: {},
-  document: {}
-}
-
-export default function IntegratedResources({ name }) {
-
-  const [bookAbbr, setBookAbbr] = useState('')
-
-  function handleChange() {
-    setBookAbbr(book => book + document.getElementById('bookAbbr').value)
+    audio: {},
+    video: {},
+    document: {}
   }
-  function handleFileLoad(data) {
-    parseToJson(bookAbbr, data)
-  }
-  function parseToJson(bookAbbr,data) {
+
+export function parseToJson(bookAbbr,data) {
     const path = "/media/books/" + bookAbbr + "/Resources/"
     const icon = "img/"
     
@@ -136,6 +117,7 @@ export default function IntegratedResources({ name }) {
     json.video = video
     json.document = documents
     document.getElementById('alert').removeAttribute('hidden')
+    return json
   }
 
   function buildObject(row, path) {
@@ -149,7 +131,7 @@ export default function IntegratedResources({ name }) {
             {
               name:  row[4],
               location: path + row[0] + '/' + row[5],
-              teacherOnly: (row[7] === 'TRUE'),
+              teacheronly: (row[7] === 'TRUE'),
               downloadable: (row[8] === 'TRUE'),
               type: row[0].toLowerCase()
             }
@@ -192,30 +174,3 @@ export default function IntegratedResources({ name }) {
       }
     })
   }
-  
-  return (
-    <>
-    <Header />
-    <ReturnHome />
-    <div className="container">
-    <h2>{name}</h2>
-      <form>
-        <div className="form-group">
-        <label htmlFor="bookAbbr">Book Abbreviation</label>
-          <input type="text" className="form-control" id="bookAbbr" placeholder="Book Abbreviation" onChange={handleChange}/>
-        </div>
-        <CSVReader cssInputClass="" label="Select CSV with Resources" onFileLoaded={handleFileLoad} />
-      </form>
-    </div>
-    <div className="alert-success" id="alert" role="alert" hidden>
-      <Alert dismissable="true" variant="success" onDismiss={() => {document.getElementById('alert').setAttribute('hidden', true)}}>JSON creation complete.</Alert>
-    </div>
-    <CommitBox data={json} bookAbbr={bookAbbr}/>
-    <Footer />
-    </>
-  )
-}
-
-IntegratedResources.propTypes = {
-  name: PropTypes.string.isRequired
-}

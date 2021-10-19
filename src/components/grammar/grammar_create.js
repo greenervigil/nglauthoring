@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
 import { createGrammarId, buildGrammar, csvOutput, downloadFile } from '../../utils/grammar-utils'
 import ExportCSV from '../export_csv'
 
 export default function GrammarCreate({data, engine, productName, productId, start}) {
-    let count = start
+    const [count, setCount] = useState(start)
 
     function handleGrammarSubmit(event) {
         event.preventDefault();
@@ -20,7 +20,7 @@ export default function GrammarCreate({data, engine, productName, productId, sta
 
     function getActivityId() {
         let activityId = count
-        count++
+        setCount(count + 1)
         return activityId
     }
 
