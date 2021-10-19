@@ -13,7 +13,7 @@
     "test": "react-scripts test",
     "publish": "node ./scripts/artifact",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -47,12 +47,20 @@
     "uuid": "^8.3.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "@storybook/addon-actions": "^5.3.14",
+    "@storybook/addon-links": "^5.3.14",
+    "@storybook/addons": "^5.3.14",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^5.3.14",
+=======
     "@storybook/addon-actions": "^6.1.16",
     "@storybook/addon-essentials": "^6.1.16",
     "@storybook/addon-links": "^6.1.16",
     "@storybook/node-logger": "^6.1.16",
     "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/react": "^6.1.16",
+>>>>>>> master
     "@testing-library/cypress": "^5.1.2",
     "@testing-library/dom": "^6.12.0",
     "@testing-library/jest-dom": "^5.0.2",
