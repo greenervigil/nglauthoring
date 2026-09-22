@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button } from 'react-magma-dom'
-import { Download2Icon } from 'react-magma-icons'
+import { DownloadIcon } from 'react-magma-icons'
 import PropTypes from 'prop-types'
 
 export default function CommitBox({ data, bookAbbr }) {
@@ -17,7 +17,7 @@ export default function CommitBox({ data, bookAbbr }) {
     <div className="container">
       <form onSubmit={handleClick}>
         <div className="form-group">
-          <Button testId='save_button' type="submit" color="marketing" icon={<Download2Icon />}>
+          <Button testId='save_button' type="submit" color="marketing" icon={<DownloadIcon />}>
             Save to file
           </Button>
         </div>

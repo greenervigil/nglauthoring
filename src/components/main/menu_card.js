@@ -2,25 +2,23 @@ import React from 'react'
 import {Card, CardBody, CardHeading} from 'react-magma-dom'
 import { Button } from 'react-magma-dom'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function MenuCard({ name, description }) {
-    let history = useHistory();
+    const navigate = useNavigate();
 
     function handleClick(event) {
-        const name = event.target.name
+        const name = event.currentTarget.name
         if(name === 'Integrated Resources'){
-            history.push('/integrated-resources')
-        } else if(name === 'Book Configuration'){
-            //history.push('/book-config')
+            navigate('/integrated-resources')
         }else if (name === 'Objectives'){
-            history.push('/objectives')
+            navigate('/objectives')
         } else if (name === "SRI") {
-            history.push('/grammar')
+            navigate('/grammar')
         } else if (name === "SRI Grammar") {
-            history.push('/grammar')
+            navigate('/grammar')
         } else if (name === "SRI Server Stats") {
-            history.push('/grammar')
+            navigate('/grammar')
         }
     }
     return (

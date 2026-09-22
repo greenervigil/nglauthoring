@@ -1,18 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import CSVReader from 'react-csv-reader'
 import ObjectiveMap from './objective_map'
+
+let objectiveTextRoot = null
 
 export default function ObjectiveForm () {
 
     function readObjectiveFile(data) {
-        const tableElement = document.getElementById('objectiveText')
-        ReactDOM.render(
+        if (!objectiveTextRoot) {
+            const tableElement = document.getElementById('objectiveText')
+            objectiveTextRoot = createRoot(tableElement)
+        }
+        objectiveTextRoot.render(
             <>
                 <ObjectiveMap data={data} />
                 <strong><p>Copy & Paste the text above and add to your books info.xml file.</p></strong>
-            </>, 
-        tableElement)
+            </>
+        )
     }
     return (
         <form>

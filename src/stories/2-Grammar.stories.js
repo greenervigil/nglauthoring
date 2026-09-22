@@ -1,5 +1,5 @@
 import React from 'react';
-import Grammar from '../components/grammar/grammar'
+import Grammar from '../pages/grammar'
 import GrammarForm from '../components/grammar/grammar_form'
 import GrammarCreate from '../components/grammar/grammar_create'
 

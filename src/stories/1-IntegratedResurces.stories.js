@@ -1,5 +1,5 @@
 import React from 'react';
-import IntegratedResources from '../components/integrated_resources/integrated_resources'
+import IntegratedResources from '../pages/integrated_resources'
 
 export default {
   title: 'Integrated Resources',

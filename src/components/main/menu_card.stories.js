@@ -1,9 +1,11 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import MenuCard from './menu_card'
 
 export default {
     title: "Menu Card",
     component: MenuCard,
+    decorators: [(Story) => <MemoryRouter><Story /></MemoryRouter>],
 }
 
 const Template = (args) => <MenuCard { ...args} />
