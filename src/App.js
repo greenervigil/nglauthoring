@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import Main from './pages/main';
+import Main from './Main';
 
 
 export default function App() {
