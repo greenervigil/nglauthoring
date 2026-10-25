@@ -38,6 +38,10 @@ Development tool for Component Driven Development.
 
 Lints the project with ESLint.
 
+### Dependency pins
+
+`package.json` `resolutions` force patched versions of vulnerable transitive packages, and `patches/react-scripts+5.0.1.patch` (applied automatically on install) lets Create React App's dev server run on webpack-dev-server 5. Keep both when upgrading.
+
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
